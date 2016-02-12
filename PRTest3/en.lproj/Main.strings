@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Please Connect Structure Sensor"; ObjectID = "Cam-Of-tkZ"; */
+"Cam-Of-tkZ.text" = "Please Connect Structure Sensor";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "GAO-up-Jkh"; */
+"GAO-up-Jkh.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KFa-fd-n0N"; */
+"KFa-fd-n0N.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Viq-DO-qPr"; */
+"Viq-DO-qPr.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Tracking Lost! Please or Press Reset."; ObjectID = "WGY-S7-4bm"; */
+"WGY-S7-4bm.text" = "Tracking Lost! Please or Press Reset.";
+
+/* Class = "UIButton"; normalTitle = "Scan"; ObjectID = "d1e-z0-yNR"; */
+"d1e-z0-yNR.normalTitle" = "Scan";
+
+/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "jIi-by-tg9"; */
+"jIi-by-tg9.normalTitle" = "Open";
+
+/* Class = "UILabel"; text = "9.0 x 9.0 x 9.0 meters"; ObjectID = "kBH-Cf-Jwn"; */
+"kBH-Cf-Jwn.text" = "9.0 x 9.0 x 9.0 meters";
