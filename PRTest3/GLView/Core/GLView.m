@@ -335,12 +335,44 @@
 	}
 	else
 	{
-		GLfloat near = (self.near > 0.0f)? self.near: 1.0f;
-		GLfloat far = (self.far > self.near)? self.far: (near + 50.0f);
-		GLfloat aspect = self.bounds.size.width / self.bounds.size.height;
-		GLfloat top = tanf(self.fov * 0.5f) * near;
-		glFrustumf(aspect * -top, aspect * top, -top, top, near, far);
-		glTranslatef(0.0f, 0.0f, -near);
+        /*
+         GLfloat near = (self.near > 0.0f)? self.near: 1.0f;//1.0f;
+         GLfloat far = (self.far > self.near)? self.far: (near + 50.0f);
+         GLfloat aspect = self.bounds.size.width / self.bounds.size.height;
+         GLfloat top = tanf(self.fov * 0.5f) * near;
+         glFrustumf(aspect * -top, aspect * top, -top, top, near, far);
+         */
+        GLfloat near = (self.near > 0.0f)? self.near: 0.1f;//1.0f;
+		GLfloat far = (self.far > self.near)? self.far: (25.0f); // (near + 50.0f)
+        
+        near = near * (-1.0f);
+        far = far * (-1.0f);
+        
+        GLfloat aspect = self.bounds.size.width / self.bounds.size.height;//4.0f/3.0f;//
+		GLfloat fH = tanf(self.fov * 0.5f) * (near); // fov should be Yfov
+        fH = fH * (-1.0f);
+        
+        GLfloat fW = aspect * fH;    // flip Y
+        glFrustumf(-fW, fW, -fH, fH, near, far);
+		//glTranslatef(0.0f, 0.0f, -near); // jack
+        
+        NSLog(@"aspect:%f, near:%f, far:%f, fH:%f, fW:%f, boundW:%f, boundH:%f",aspect,near, far, fH, fW, self.bounds.size.width, self.bounds.size.height);
+        
+        GLfloat m00 = (2*near) / (2*fW);
+        GLfloat m11 = (2*near) / (2*fH);
+        GLfloat m22 = (far + near) / (far - near);
+        
+        GLfloat m02 = 0;
+        GLfloat m12 = 0;
+        GLfloat m23 = (2*far*near) / (far-near);
+        
+        
+        
+        NSLog(@"glProjectMatrix0: %f, 0, %f, 0",m00,  m02);
+        NSLog(@"glProjectMatrix1: 0, %f, %f, 0",m11, m12);
+        NSLog(@"glProjectMatrix2: 0, 0, %f, %f",m22, m23);
+        NSLog(@"glProjectMatrix3: 0, 0, 1, 0"); //(-1*-1)
+
 	}
     
     glMatrixMode(GL_MODELVIEW);

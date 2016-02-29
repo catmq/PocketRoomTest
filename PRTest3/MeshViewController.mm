@@ -224,6 +224,8 @@ enum MeasurementState {
         NSLog(@"Couldn't create video capture device");
     }
     
+    
+    
     //----- ADD OUTPUTS -----
     
     //ADD VIDEO PREVIEW LAYER
@@ -640,9 +642,7 @@ enum MeasurementState {
     ScanViewController* SVcontroller = [_storyboard instantiateViewControllerWithIdentifier:@"ScanViewController"];
     
     [[[[UIApplication sharedApplication] delegate] window] setRootViewController:SVcontroller];
-    //[[[[UIApplication sharedApplication] delegate] window] setRootViewController:self];
     
-    NSLog(@"dismissView2");
 }
 
 #pragma mark - MeshViewer Camera and Mesh Setup
@@ -716,6 +716,17 @@ enum MeasurementState {
     GLKMatrix4 modelViewMatrix = GLKMatrix4Invert(_cameraPoseBeforeUserInteractions, &isInvertible);
     NSAssert (isInvertible, @"Bad viewpoint.");
     GLKMatrix4 projectionMatrix = glProjectionMatrixFromPerspective(_cameraFovBeforeUserInteractions, _cameraAspectRatioBeforeUserInteractions);
+    
+    
+    NSLog(@"savePrvimg::modelViewMatrix0: %f, %f, %f, %f",modelViewMatrix.m00, modelViewMatrix.m01, modelViewMatrix.m02, modelViewMatrix.m03);
+    NSLog(@"savePrvimg::modelViewMatrix1: %f, %f, %f, %f",modelViewMatrix.m10, modelViewMatrix.m11, modelViewMatrix.m12, modelViewMatrix.m13);
+    NSLog(@"savePrvimg::modelViewMatrix2: %f, %f, %f, %f",modelViewMatrix.m20, modelViewMatrix.m21, modelViewMatrix.m22, modelViewMatrix.m23);
+    NSLog(@"savePrvimg::modelViewMatrix3: %f, %f, %f, %f",modelViewMatrix.m30, modelViewMatrix.m31, modelViewMatrix.m32, modelViewMatrix.m33);
+    
+    NSLog(@"savePrvimg::projectMatrix0: %f, %f, %f, %f",projectionMatrix.m00, projectionMatrix.m01, projectionMatrix.m02, projectionMatrix.m03);
+    NSLog(@"savePrvimg::projectMatrix1: %f, %f, %f, %f",projectionMatrix.m10, projectionMatrix.m11, projectionMatrix.m12, projectionMatrix.m13);
+    NSLog(@"savePrvimg::projectMatrix2: %f, %f, %f, %f",projectionMatrix.m20, projectionMatrix.m21, projectionMatrix.m22, projectionMatrix.m23);
+    NSLog(@"savePrvimg::projectMatrix3: %f, %f, %f, %f",projectionMatrix.m30, projectionMatrix.m31, projectionMatrix.m32, projectionMatrix.m33);
     
     // Keep the current render mode
     MeshRenderer::RenderingMode previousRenderingMode = _meshRenderer->getRenderingMode();
@@ -916,6 +927,18 @@ enum MeasurementState {
     
     GLKMatrix4 currentModelView = _viewpointController->currentGLModelViewMatrix();
     GLKMatrix4 currentProjection = _viewpointController->currentGLProjectionMatrix();
+    
+    NSLog(@"draw");
+    NSLog(@"currentModelView0: %f, %f, %f, %f",currentModelView.m00, currentModelView.m01, currentModelView.m02, currentModelView.m03);
+    NSLog(@"currentModelView1: %f, %f, %f, %f",currentModelView.m10, currentModelView.m11, currentModelView.m12, currentModelView.m13);
+    NSLog(@"currentModelView2: %f, %f, %f, %f",currentModelView.m20, currentModelView.m21, currentModelView.m22, currentModelView.m23);
+    NSLog(@"currentModelView3: %f, %f, %f, %f",currentModelView.m30, currentModelView.m31, currentModelView.m32, currentModelView.m33);
+
+    NSLog(@"currentProjection0: %f, %f, %f, %f",currentProjection.m00, currentProjection.m01, currentProjection.m02, currentProjection.m03);
+    NSLog(@"currentProjection1: %f, %f, %f, %f",currentProjection.m10, currentProjection.m11, currentProjection.m12, currentProjection.m13);
+    NSLog(@"currentProjection2: %f, %f, %f, %f",currentProjection.m20, currentProjection.m21, currentProjection.m22, currentProjection.m23);
+    NSLog(@"currentProjection3: %f, %f, %f, %f",currentProjection.m30, currentProjection.m31, currentProjection.m32, currentProjection.m33);
+
     
     _meshRenderer->clear();
     _meshRenderer->render(currentProjection, currentModelView);

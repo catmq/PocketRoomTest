@@ -60,6 +60,8 @@
         NSLog(@"Couldn't create video capture device");
     }
     
+    NSLog(@"-------camera FOV: %f", VideoDevice.activeFormat.videoFieldOfView);
+    
     //----- ADD OUTPUTS -----
     
     //ADD VIDEO PREVIEW LAYER

@@ -470,6 +470,65 @@ static NSCache *imageCache = nil;
     return [self initWithUIImage:image];
 }
 
+//
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
++(UIImage*)imageWithOriginalImage:(CGImageRef)cgImage flip:(BOOL)horizontal
+{
+    const CGFloat originalWidth = CGImageGetWidth(cgImage);
+    const CGFloat originalHeight = CGImageGetHeight(cgImage);
+    /// Number of bytes per row, each pixel in the bitmap will be represented by 4 bytes (ARGB), 8 bits of alpha/red/green/blue
+    const size_t bytesPerRow = originalWidth * 4;
+    
+    /// Create an ARGB bitmap context
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    /// Create the bitmap context, we want pre-multiplied ARGB, 8-bits per component
+    CGContextRef bmContext = CGBitmapContextCreate(NULL, originalWidth, originalHeight, 8/*Bits per component*/, bytesPerRow, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
+    
+    CGColorSpaceRelease(colorSpace);
+    
+    if (!bmContext)
+        return nil;
+    
+    /// Image quality
+    CGContextSetShouldAntialias(bmContext, true);
+    CGContextSetAllowsAntialiasing(bmContext, true);
+    CGContextSetInterpolationQuality(bmContext, kCGInterpolationHigh);
+    
+    horizontal ? CGContextScaleCTM(bmContext, -1.0f, 1.0f) : CGContextScaleCTM(bmContext, 1.0f, -1.0f);
+    
+    /// Draw the image in the bitmap context
+    const CGRect r = horizontal ? (CGRect){.origin.x = -originalWidth, .origin.y = 0.0f, .size.width = originalWidth, .size.height = originalHeight}: (CGRect){.origin.x = 0.0f, .origin.y = -originalHeight, .size.width = originalWidth, .size.height = originalHeight};
+    CGContextDrawImage(bmContext, r, cgImage);
+    
+    /// Create an image object from the context
+    CGImageRef flippedImageRef = CGBitmapContextCreateImage(bmContext);
+#ifdef kNYXReturnRetainedObjects
+    UIImage* flipped = [[UIImage alloc] initWithCGImage:flippedImageRef];
+#else
+    UIImage* flipped = [UIImage imageWithCGImage:flippedImageRef];
+#endif
+    
+    /// Cleanup
+    CGImageRelease(flippedImageRef);
+    CGContextRelease(bmContext);
+    
+    return flipped;
+    //attempt to load as regular image
+    //return [self initWithUIImage:image];
+}
+
+
 - (void)dealloc
 {
     if (!_superimage)

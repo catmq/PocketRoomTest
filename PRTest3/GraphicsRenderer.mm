@@ -128,6 +128,9 @@ void GraphicsRenderer::renderLine(const GLKVector3 pt1, const GLKVector3 pt2, co
     GLKVector3 camera = GLKMatrix4MultiplyVector3WithTranslation(GLKMatrix4Invert(modelViewMatrix, &invertible), GLKVector3Make(0, 0, 0));
     GLKVector3 directionToCamera = GLKVector3Subtract(camera, pt1);
     
+    NSLog(@"renderline: camera: %f, %f, %f",camera.x,camera.y,camera.z);
+    NSLog(@"renderline: directionToCamera: %f, %f, %f",directionToCamera.x,directionToCamera.y,directionToCamera.z);
+    
     GLKVector3 perpendicularVec = GLKVector3CrossProduct(directionToCamera, direction);
     perpendicularVec = GLKVector3Normalize(perpendicularVec);
     

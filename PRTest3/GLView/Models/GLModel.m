@@ -98,6 +98,9 @@ WWDC2010Attributes;
 @property (nonatomic, assign) GLuint elementSize;
 @property (nonatomic, assign) GLenum elementType;
 
+//
+@property (nonatomic, assign) GLfloat *centerpos;
+
 @end
 
 
@@ -207,7 +210,7 @@ WWDC2010Attributes;
 }
 
 - (BOOL)loadObjModel:(NSData *)data
-{    
+{
     //convert to string
     NSString *string = [[NSString alloc] initWithBytesNoCopy:(void *)data.bytes length:data.length encoding:NSASCIIStringEncoding freeWhenDone:NO];
     
@@ -227,6 +230,25 @@ WWDC2010Attributes;
     //scan through lines
     NSString *line = nil;
     NSScanner *lineScanner = [NSScanner scannerWithString:string];
+    
+    int SizeGLuint = sizeof(GLuint);
+    int SizeGLfloat = sizeof(GLfloat);
+    int fcount = 0;
+    int vcount = 0;
+    
+    /*
+    NSDate *methodStart = [NSDate date];
+    NSDate *methodFinish = [NSDate date];
+    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+    NSTimeInterval fETime = executionTime, vEtime = executionTime, vtEtime = executionTime, vnEtime = executionTime;
+    
+    NSDate *tStart = [NSDate date];
+    NSDate *tFinish = [NSDate date];
+    NSTimeInterval tTime = [tFinish timeIntervalSinceDate:tStart];
+    NSTimeInterval sTime0 = tTime, sTime1 = tTime, sTime2 = tTime, sTime3 = tTime, sTime4 = tTime, sTime5 = tTime, sTime6 = tTime;
+    */
+    
+    NSLog(@"loadobj 3");  // check
     do
     {
         //get line
@@ -240,90 +262,137 @@ WWDC2010Attributes;
         if ([type isEqualToString:@"v"])
         {
             //vertex
+            vcount++;
+            //methodStart = [NSDate date];
             GLfloat coords[3];
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
             [scanner scanFloat:&coords[2]];
             [tempVertexData appendBytes:coords length:sizeof(coords)];
+            //methodFinish = [NSDate date];
+            //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+            //vEtime = vEtime + executionTime;
+
         }
         else if ([type isEqualToString:@"vt"])
         {
             //texture coordinate
+            //methodStart = [NSDate date];
             GLfloat coords[2];
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
             [tempTextCoordData appendBytes:coords length:sizeof(coords)];
+            //methodFinish = [NSDate date];
+            //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+            //vtEtime = vtEtime + executionTime;
         }
         else if ([type isEqualToString:@"vn"])
         {
             //normal
+            //methodStart = [NSDate date];
             GLfloat coords[3];
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
             [scanner scanFloat:&coords[2]];
             [tempNormalData appendBytes:coords length:sizeof(coords)];
+            //methodFinish = [NSDate date];
+            //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+            //vnEtime = vnEtime + executionTime;
         }
         else if ([type isEqualToString:@"f"])
         {
             //face
+            fcount ++;
+            
             int count = 0;
+            
+            //methodStart = [NSDate date];
             NSString *indexString = nil;
-            while (![scanner isAtEnd])
+            
+            while (![scanner isAtEnd])  // time-consuming
             {
                 count ++;
-                [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:&indexString];
+                [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:&indexString];  // time-consuming
                 
-                NSArray *parts = [indexString componentsSeparatedByString:@"/"];
+                NSArray *parts = [indexString componentsSeparatedByString:@"/"];  // time-consuming
                 
                 GLuint fIndex = uniqueIndexStrings;
                 NSNumber *index = indexStrings[indexString];
+                
+                
                 if (index == nil)
                 {
+                    //tStart = [NSDate date];
                     uniqueIndexStrings ++;
                     indexStrings[indexString] = @(fIndex);
                     
                     GLuint vIndex = [parts[0] intValue];
-                    [vertexData appendBytes: (GLbyte *)tempVertexData.bytes + (vIndex - 1) * sizeof(GLfloat) * 3 length:sizeof(GLfloat) * 3];
-                    //[vertexData appendBytes: (GLbyte *)tempVertexData.bytes + (vIndex - 1) * 3 length:sizeof(GLfloat) * 3];
-                   // NSLog(@"test 1");
-
+                    [vertexData appendBytes: (GLbyte *)tempVertexData.bytes + (vIndex - 1) * SizeGLfloat * 3 length:SizeGLfloat * 3];
+                    
                     if ([parts count] > 1)
                     {
                         GLuint tIndex = [parts[1] intValue];
-                        if (tIndex) [textCoordData appendBytes: (GLbyte *)tempTextCoordData.bytes + (tIndex - 1) * sizeof(GLfloat) * 2 length:sizeof(GLfloat) * 2];
-                        //if (tIndex) [textCoordData appendBytes: (GLfloat *)tempTextCoordData.bytes + (tIndex - 1) * 2 length:sizeof(GLfloat) * 2];
-                        //NSLog(@"test 2");
+                        if (tIndex) [textCoordData appendBytes: (GLbyte *)tempTextCoordData.bytes + (tIndex - 1) * SizeGLfloat * 2 length:SizeGLfloat * 2];
                     }
                     
                     if ([parts count] > 2)
                     {
                         GLuint nIndex = [parts[2] intValue];
-                        if (nIndex) [normalData appendBytes: (GLbyte *)tempNormalData.bytes + (nIndex - 1) * sizeof(GLfloat) * 3 length:sizeof(GLfloat) * 3];
-                        //if (nIndex) [normalData appendBytes: (GLfloat *)tempNormalData.bytes + (nIndex - 1) * 3 length:sizeof(GLfloat) * 3];
-                        //NSLog(@"test 3");
+                        if (nIndex) [normalData appendBytes: (GLbyte *)tempNormalData.bytes + (nIndex - 1) * SizeGLfloat * 3 length:SizeGLfloat * 3];
                     }
+                    //tFinish = [NSDate date];
+                    //tTime = [tFinish timeIntervalSinceDate:tStart];
+                    //sTime1 = sTime1 + tTime;
                 }
                 else
                 {
+                    //tStart = [NSDate date];
                     fIndex = [index unsignedLongValue];
+                    //tFinish = [NSDate date];
+                    //tTime = [tFinish timeIntervalSinceDate:tStart];
+                    //sTime2 = sTime2 + tTime;
                 }
                 
                 if (count > 3)
                 {
                     //face has more than 3 sides
                     //so insert extra triangle coords
-                    [faceIndexData appendBytes:(GLbyte *)faceIndexData.bytes + faceIndexData.length - sizeof(GLuint) * 3 length:sizeof(GLuint)];
-                    [faceIndexData appendBytes:(GLbyte *)faceIndexData.bytes + faceIndexData.length - sizeof(GLuint) * 2 length:sizeof(GLuint)];
-                    //NSLog(@"test 4");
+                    //tStart = [NSDate date];
+                    
+                    [faceIndexData appendBytes:(GLbyte *)faceIndexData.bytes + faceIndexData.length - SizeGLuint * 3 length:SizeGLuint];
+                    [faceIndexData appendBytes:(GLbyte *)faceIndexData.bytes + faceIndexData.length - SizeGLuint * 2 length:SizeGLuint];
+                    //tFinish = [NSDate date];
+                    //tTime = [tFinish timeIntervalSinceDate:tStart];
+                    //sTime3 = sTime3 + tTime;
                 }
                 
-                [faceIndexData appendBytes:&fIndex length:sizeof(GLuint)];
+                //tStart = [NSDate date];
+                
+                [faceIndexData appendBytes:&fIndex length:SizeGLuint];
+                
+                //tFinish = [NSDate date];
+                //tTime = [tFinish timeIntervalSinceDate:tStart];
+                //sTime4 = sTime4 + tTime;
+                
+                //methodFinish = [NSDate date];
+                //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+                //fETime = fETime + executionTime;
+
             }
             
         }
         //TODO: more
     }
     while (![lineScanner isAtEnd]);
+    
+    
+    NSLog(@"loadobj 4=> face: %d, vertices: %d", fcount, vcount);  // check
+    //face: 82390, vertices: 76385
+    //NSLog(@"Time=> fETime: %f, vEtime: %f, vtETime: %f, vnEtime: %f", fETime, vEtime, vtEtime, vnEtime);  // check
+    //fETime: 23.699393, vEtime: 0.603432, vtETime: 0.481311, vnEtime: 0.604745
+    //NSLog(@"subtime=> sTime0: %f, sTime5: %f, sTime6: %f, sTime1: %f, sTime2: %f, sTime3: %f, sTime4: %f", sTime0, sTime5, sTime6, sTime1, sTime2, sTime3, sTime4);
+    //sTime0: 1.920398, sTime5: 2.962393, sTime6: 1.017529, sTime1: 0.990950, sTime2: 0.439304, sTime3: 0.000002, sTime4: 0.614738
+    
     
     //release temporary storage
     
@@ -364,6 +433,25 @@ WWDC2010Attributes;
     self.vertices = (GLfloat *)malloc([vertexData length]);
     memcpy(self.vertices, vertexData.bytes, [vertexData length]);
     
+    /*
+    // get center of vertices
+    NSLog(@"get center point");
+    self.centerpos =(GLfloat *)malloc(3 * sizeof(GLfloat));
+    self.centerpos[0] = 0;
+    self.centerpos[1] = 0;
+    self.centerpos[2] = 0;
+    for (GLuint i = 0; i < self.vertexCount; i++)
+    {
+        self.centerpos[0] = self.centerpos[0]+ self.vertices[3*i];
+        self.centerpos[1] = self.centerpos[1]+ self.vertices[3*i+1];
+        self.centerpos[2] = self.centerpos[2]+ self.vertices[3*i+2];
+    }
+    self.centerpos[0] = self.centerpos[0]/self.vertexCount;
+    self.centerpos[1] = self.centerpos[1]/self.vertexCount;
+    self.centerpos[2] = self.centerpos[2]/self.vertexCount;
+    NSLog(@"finish center point: %f, %f, %f", self.centerpos[0],self.centerpos[1],self.centerpos[2]);
+    */
+    
     //copy texture coords
     if ([textCoordData length])
     {
@@ -378,10 +466,16 @@ WWDC2010Attributes;
         memcpy(self.normals, normalData.bytes, [normalData length]);
     }
     
+    
     //success
     return YES;
 }
-
+/*
+- (float*)centerpoint
+{
+    return (float*)(self.centerpos);
+}
+*/
 
 #pragma mark -
 #pragma mark Caching
@@ -413,6 +507,7 @@ static NSCache *modelCache = nil;
 }
 
 
+
 #pragma mark -
 #pragma mark Loading
 
@@ -437,21 +532,56 @@ static NSCache *modelCache = nil;
 
 - (GLModel *)initWithData:(NSData *)data
 {
+    NSLog(@"initWithData  now");
+    
     //attempt to unzip data
     data = [data GL_unzippedData];
+    
+    NSLog(@"check data  now");
     
     if (!data)
     {
         //bail early before something bad happens
         return nil;
     }
+    NSLog(@"self init  now");
 
     if ((self = [self init]))
     {
-        //attempt to load model
-        if ([self loadAppleWWDC2010Model:data] || [self loadObjModel:data])
+        NSLog(@"check loadAppleWWDC2010Model data now");
+        
+        if ([self loadAppleWWDC2010Model:data])
         {
-            NSLog(@"Model data loading now");
+            NSLog(@"loadAppleWWDC2010Model loading now");
+            return self;
+        }
+        else
+        {
+            NSLog(@"check loadObjModel data now");
+            
+            if ([self loadObjModel:data])
+            {
+                NSLog(@"loadObjModel  now");
+                return self;
+            }
+            else
+            {
+                NSLog(@"Model data was not in a recognised format");
+                return nil;
+            }
+            
+        }
+        
+        /*
+        //attempt to load model
+        if ([self loadAppleWWDC2010Model:data])
+        {
+            NSLog(@"loadAppleWWDC2010Model loading now");
+            return self;
+        }
+        else if ([self loadObjModel:data])
+        {
+            NSLog(@"loadObjModel  now");
             return self;
         }
         else
@@ -459,6 +589,7 @@ static NSCache *modelCache = nil;
             NSLog(@"Model data was not in a recognised format");
             return nil;
         }
+        */
     }
     return self;
 }

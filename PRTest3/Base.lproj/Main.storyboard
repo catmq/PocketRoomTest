@@ -85,30 +85,99 @@
                                     <segue destination="BYZ-38-t0r" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="99a-F7-tZh"/>
                                 </connections>
                             </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJf-Vg-x69">
-                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
-                                <items>
-                                    <barButtonItem title="Model" id="cbV-Bb-dxI">
-                                        <connections>
-                                            <action selector="selectLoadModel" destination="Pfe-4W-2mD" id="azb-eS-p1t"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQl-a9-17V" userLabel="LoadModelView" customClass="GLModelView">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="724"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-20" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="684-VZ-bje" userLabel="xslider">
+                                        <rect key="frame" x="847" y="579" width="162" height="31"/>
+                                        <connections>
+                                            <action selector="ModelXSliderValueChanged:" destination="Pfe-4W-2mD" eventType="valueChanged" id="SbC-lv-K51"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-20" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="qU3-8v-KQH" userLabel="yslider">
+                                        <rect key="frame" x="847" y="626" width="162" height="31"/>
+                                        <connections>
+                                            <action selector="ModelYSliderValueChanged:" destination="Pfe-4W-2mD" eventType="valueChanged" id="3ux-G5-gxd"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-20" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="k3l-kK-gJp" userLabel="zslider">
+                                        <rect key="frame" x="847" y="672" width="162" height="31"/>
+                                        <connections>
+                                            <action selector="ModelZSliderValueChanged:" destination="Pfe-4W-2mD" eventType="valueChanged" id="hpl-pf-XyJ"/>
+                                        </connections>
+                                    </slider>
+                                    <slider hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="1lf-zv-ikQ" userLabel="scaleslider">
+                                        <rect key="frame" x="847" y="718" width="162" height="31"/>
+                                        <connections>
+                                            <action selector="ScaleSliderValueChanged:" destination="Pfe-4W-2mD" eventType="valueChanged" id="32P-ai-d3b"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpK-bS-0oq">
+                                        <rect key="frame" x="23" y="701" width="84" height="47"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="4SJ-wZ-1I9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXw-xu-2Lj">
+                                        <rect key="frame" x="849" y="513" width="158" height="47"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Model">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectLoadModel" destination="Pfe-4W-2mD" eventType="touchDown" id="WGA-fg-E4S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2Z-8T-eAQ" userLabel="Label - Status">
+                                <rect key="frame" x="172" y="335" width="679" height="98"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJf-Vg-x69">
+                                <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                                <items>
+                                    <barButtonItem title="Model" id="cbV-Bb-dxI"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.44903468586387429" green="0.086350356705907003" blue="0.077127889265762223" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="LoadModelView" destination="mQl-a9-17V" id="4GP-gg-FhL"/>
+                        <outlet property="ScaleSlider" destination="1lf-zv-ikQ" id="HKS-yn-glh"/>
+                        <outlet property="appStatusLabel" destination="t2Z-8T-eAQ" id="Soa-SV-dbJ"/>
+                        <outlet property="modelXSlider" destination="684-VZ-bje" id="fzg-El-YN0"/>
+                        <outlet property="modelYSlider" destination="qU3-8v-KQH" id="Icq-0L-ST0"/>
+                        <outlet property="modelZSlider" destination="k3l-kK-gJp" id="6Rb-aH-0eh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADW-WU-oAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3882" y="-874"/>
+            <point key="canvasLocation" x="-3913" y="-825"/>
         </scene>
         <!--Scan View Controller-->
         <scene sceneID="UbA-Sp-Qq1">
@@ -168,7 +237,7 @@
                                 </state>
                                 <connections>
                                     <action selector="doneButtonPressed:" destination="6gw-lv-t4e" eventType="touchUpInside" id="wc2-Op-r5y"/>
-                                    <segue destination="3QM-3H-7wd" kind="modal" id="ZEj-Og-h42"/>
+                                    <segue destination="3QM-3H-7wd" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ZEj-Og-h42"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Connect Structure Sensor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cam-Of-tkZ" userLabel="Label -App Status Message">
@@ -317,7 +386,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6gw-lv-t4e" kind="modal" modalTransitionStyle="crossDissolve" id="sby-3l-jS2"/>
+                                    <segue destination="6gw-lv-t4e" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="sby-3l-jS2"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pP-dH-lr1" userLabel="Button - Save">
@@ -378,7 +447,7 @@
         <image name="startScanButton.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="99a-F7-tZh"/>
         <segue reference="sby-3l-jS2"/>
-        <segue reference="W3i-tc-Q6N"/>
     </inferredMetricsTieBreakers>
 </document>

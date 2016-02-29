@@ -450,7 +450,7 @@ void MeshRenderer::renderPartialMesh(int meshIndex)
 
 void MeshRenderer::render(const GLKMatrix4& projectionMatrix, const GLKMatrix4& modelViewMatrix)
 {
-    NSLog(@"MeshRenderer::render");
+    //NSLog(@"MeshRenderer::render");
     
     if (d->currentRenderingMode == RenderingModePerVertexColor && !d->hasPerVertexColor && d->hasTexture && d->hasPerVertexUV)
     {
@@ -488,13 +488,6 @@ void MeshRenderer::render(const GLKMatrix4& projectionMatrix, const GLKMatrix4& 
         case RenderingModeTextured:
             if (!d->hasTexture || d->lumaTexture == NULL || d->chromaTexture == NULL)
             {
-                if(!d->hasTexture)
-                    NSLog(@" no d->hasTexture");
-                if(!d->lumaTexture)
-                    NSLog(@" no d->lumaTexture");
-                if(!d->chromaTexture)
-                    NSLog(@" no d->chromaTexture");
-                    
                 NSLog(@"Warning: null textures, skipping rendering.");
                 return;
             }

@@ -292,6 +292,9 @@
     GLKVector3 cameraCenter = GLKVector3MultiplyScalar(_slamState.cameraPoseInitializer.volumeSizeInMeters, 0.5);
     GLKMatrix4 initialCameraPose = GLKMatrix4MakeTranslation(cameraCenter.x, cameraCenter.y, cameraCenter.z);
     
+    NSLog(@"enterViewingState::cameraCenter: %f ,%f ,%f ",cameraCenter.x, cameraCenter.y, cameraCenter.z);
+
+    
     [self presentMeshViewer:_colorizedMesh withCameraPose:initialCameraPose];
     
     _slamState.roomCaptureState = RoomCaptureStateViewing;
@@ -568,7 +571,7 @@
     [EAGLContext setCurrentContext:_display.context];
     
     // Horizontal field of view.
-    float fovXRadians = 90.f/180.f * M_PI;
+    float fovXRadians = 44.419998f/180.f * M_PI; //90.f/180.f * M_PI; // default
     float aspectRatio = 4.f/3.f;
     
     if (mesh)
@@ -580,19 +583,14 @@
     {
         NSLog(@"Error: no mesh!");
     }
+    
+    NSLog(@"setHorizontalFieldOfView: %f, aspectRatio: %f",fovXRadians,aspectRatio);
     [_meshViewController setHorizontalFieldOfView:fovXRadians aspectRatio:aspectRatio];
+    
     [_meshViewController setCameraPose:cameraPose];
-    
-    NSLog(@"start presentViewController : _meshViewNavigationController");
-    
-    //[self presentViewController:_meshViewNavigationController animated:YES completion:^{}];
-    //UIStoryboard* _storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //ScanViewController* SVcontroller = [_storyboard instantiateViewControllerWithIdentifier:@"SViewController"];
     
     [[[[UIApplication sharedApplication] delegate] window] setRootViewController:_meshViewNavigationController];
 
-    
-    
     NSLog(@"end presentViewController : _meshViewNavigationController");
 }
 

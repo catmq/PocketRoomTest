@@ -46,10 +46,12 @@
 + (instancetype)modelWithContentsOfFile:(NSString *)nameOrPath;
 + (instancetype)modelWithData:(NSData *)data;
 
+
 - (instancetype)initWithContentsOfFile:(NSString *)nameOrPath;
 - (instancetype)initWithData:(NSData *)data;
 
 - (void)draw;
+//- (float*)centerpoint;
 
 @end
 

@@ -118,6 +118,12 @@ void ViewpointController::setCameraPerspective(float fovXRadians, float aspectRa
     d->aspectRatio = aspectRatio;
     d->glProjectionMatrix = glProjectionMatrixFromPerspective(fovXRadians, aspectRatio);
     d->cameraOrProjectionChangedSinceLastUpdate = true;
+   
+    NSLog(@"setCameraPerspective");
+    NSLog(@"projectMatrix0: %f, %f, %f, %f",d->glProjectionMatrix.m00,d->glProjectionMatrix.m01,d->glProjectionMatrix.m02,d->glProjectionMatrix.m03);
+    NSLog(@"projectMatrix1: %f, %f, %f, %f",d->glProjectionMatrix.m10,d->glProjectionMatrix.m11,d->glProjectionMatrix.m12,d->glProjectionMatrix.m13);
+    NSLog(@"projectMatrix2: %f, %f, %f, %f",d->glProjectionMatrix.m20,d->glProjectionMatrix.m21,d->glProjectionMatrix.m22,d->glProjectionMatrix.m23);
+    NSLog(@"projectMatrix3: %f, %f, %f, %f",d->glProjectionMatrix.m30,d->glProjectionMatrix.m31,d->glProjectionMatrix.m32,d->glProjectionMatrix.m33);
 }
 
 void ViewpointController::setCameraPose(GLKMatrix4 cameraPose)
@@ -125,10 +131,22 @@ void ViewpointController::setCameraPose(GLKMatrix4 cameraPose)
     bool isInvertible = false;
     GLKMatrix4 modelView = GLKMatrix4Invert(cameraPose, &isInvertible);
     
+    NSLog(@"setCameraPose::cameraPose0: %f, %f, %f, %f",cameraPose.m00, cameraPose.m01, cameraPose.m02, cameraPose.m03);
+    NSLog(@"setCameraPose::cameraPose1: %f, %f, %f, %f",cameraPose.m10, cameraPose.m11, cameraPose.m12, cameraPose.m13);
+    NSLog(@"setCameraPose::cameraPose2: %f, %f, %f, %f",cameraPose.m20, cameraPose.m21, cameraPose.m22, cameraPose.m23);
+    NSLog(@"setCameraPose::cameraPose3: %f, %f, %f, %f",cameraPose.m30, cameraPose.m31, cameraPose.m32, cameraPose.m33);
+    
     d->modelViewYaw = atan2f(-modelView.m02, sqrtf(modelView.m12*modelView.m12+modelView.m22*modelView.m22));
     d->modelViewPitch = atan2f(modelView.m12, modelView.m22);
     d->referenceModelViewTranslation = GLKVector3Make(modelView.m30, modelView.m31, modelView.m32);
     d->cameraOrProjectionChangedSinceLastUpdate = true;
+    
+    NSLog(@"setCameraPose::modelView = invert camera Pose, Yaw: %f",d->modelViewYaw);
+    NSLog(@"setCameraPose::modelViewPitch: %f",d->modelViewPitch);
+    NSLog(@"setCameraPose::modelView0: %f, %f, %f, %f",modelView.m00, modelView.m01, modelView.m02, modelView.m03);
+    NSLog(@"setCameraPose::modelView1: %f, %f, %f, %f",modelView.m10, modelView.m11, modelView.m12, modelView.m13);
+    NSLog(@"setCameraPose::modelView2: %f, %f, %f, %f",modelView.m20, modelView.m21, modelView.m22, modelView.m23);
+    NSLog(@"setCameraPose::modelView3: %f, %f, %f, %f (model ref pos)",modelView.m30, modelView.m31, modelView.m32, modelView.m33);
 }
 
 void ViewpointController::setTopViewModeEnabled(bool enable)
@@ -143,8 +161,9 @@ void ViewpointController::onPinchGestureBegan(float scale)
 
 void ViewpointController::onPinchGestureChanged(float scale)
 {
-    const float maxFOV = M_PI * 0.9;
-    const float minFOV = M_PI * 0.1;
+    // limit the fov
+    const float maxFOV = (44.419998f/180.f * M_PI); //M_PI * 0.9; // default
+    const float minFOV = (44.419998f/180.f * M_PI); //M_PI * 0.1; // default
     d->fovXRadians = MAX(minFOV, MIN(maxFOV, d->fovXRadiansWhenPinchGestureBegan / scale));
     d->glProjectionMatrix = glProjectionMatrixFromPerspective(d->fovXRadians, d->aspectRatio);
     d->cameraOrProjectionChangedSinceLastUpdate = true;

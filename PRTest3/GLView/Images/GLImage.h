@@ -86,6 +86,9 @@ typedef void (^GLImageDrawingBlock)(CGContextRef context);
 - (void)drawAtPoint:(CGPoint)point;
 - (void)drawInRect:(CGRect)rect;
 
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
++ (UIImage*)imageWithOriginalImage:(CGImageRef)cgImage flip:(BOOL)horizontal;
+
 @end
 
 

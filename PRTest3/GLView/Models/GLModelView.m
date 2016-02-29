@@ -45,11 +45,15 @@
 {
 	[super setUp];
     
-	self.fov = (CGFloat)M_PI_2;
+    // should put Yfov
+	self.fov = (CGFloat)(44.419998f/180.f * M_PI) * 0.75f; // 44.41998 is the fov of the camera of the device (from AVCaptureDevice)
+    //(CGFloat)M_PI_2; // default
     
+    /*
     GLLight *light = [[GLLight alloc] init];
     light.transform = CATransform3DMakeTranslation(-0.5f, 1.0f, 0.5f);
     self.lights = @[light];
+    */
     
     _modelTransform = CATransform3DIdentity;
 }
