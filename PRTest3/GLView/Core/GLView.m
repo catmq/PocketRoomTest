@@ -65,6 +65,13 @@
 
 - (void)render
 {
+    NSLog(@"GLLayer render");
+    
+    GLenum err0 = glGetError ();
+    if (err0 != GL_NO_ERROR)
+        NSLog(@"=========== Part -1 --- Here: glError is = %x", err0);
+    
+    
     //get view
     GLView *view = (GLView *)self.delegate;
     
@@ -91,6 +98,11 @@
 
 - (void)display
 {
+    GLenum err0 = glGetError ();
+    if (err0 != GL_NO_ERROR)
+        NSLog(@"========display=== Part -3 --- Here: glError is = %x", err0);
+    
+    
     //get view
     GLView *view = (GLView *)self.delegate;
     
@@ -103,6 +115,11 @@
 
 - (void)renderInContext:(CGContextRef)ctx
 {
+    GLenum err0 = glGetError ();
+    if (err0 != GL_NO_ERROR)
+        NSLog(@"========renderInContext=== Part -2 --- Here: glError is = %x", err0);
+    
+
     //get view
     GLView *view = (GLView *)self.delegate;
     
@@ -319,19 +336,30 @@
 
 - (void)bindFramebuffer
 {
+    GLenum err0 = glGetError ();
+    if (err0 != GL_NO_ERROR)
+        NSLog(@"=========== Part 0 --- Here: glError is = %x", err0);
+    
     [EAGLContext setCurrentContext:self.context];
+    
     
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, self.defaultFramebuffer);
 	glViewport(0, 0, _framebufferWidth, self.framebufferHeight);
 	
+    
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    GLKMatrix4 glm = GLKMatrix4MakeLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
+    glMultMatrixf(glm.m);
+    
 	if (self.fov <= 0.0f)
 	{
 		GLfloat near = self.near ?: (-self.framebufferWidth * 0.5f);
 		GLfloat far = self.far ?: (self.framebufferWidth * 0.5f);
     	glOrthof(-self.bounds.size.width / 2.0f, self.bounds.size.width / 2.0,
                  self.bounds.size.height / 2.0f, -self.bounds.size.height / 2.0f, near, far);
+        
+        
 	}
 	else
 	{
@@ -345,16 +373,28 @@
         GLfloat near = (self.near > 0.0f)? self.near: 0.1f;//1.0f;
 		GLfloat far = (self.far > self.near)? self.far: (25.0f); // (near + 50.0f)
         
-        near = near * (-1.0f);
-        far = far * (-1.0f);
+        
+        //near = near * (-1.0f);
+        //far = far * (-1.0f);
         
         GLfloat aspect = self.bounds.size.width / self.bounds.size.height;//4.0f/3.0f;//
 		GLfloat fH = tanf(self.fov * 0.5f) * (near); // fov should be Yfov
-        fH = fH * (-1.0f);
+        //fH = fH * (-1.0f);
         
         GLfloat fW = aspect * fH;    // flip Y
+        
+        err0 = glGetError ();
+        if (err0 != GL_NO_ERROR)
+            NSLog(@"=========== Part 1.2.3 --- Here: glError is = %x", err0);
+
+        
         glFrustumf(-fW, fW, -fH, fH, near, far);
 		//glTranslatef(0.0f, 0.0f, -near); // jack
+        
+        
+        err0 = glGetError ();
+        if (err0 != GL_NO_ERROR)
+            NSLog(@"=========== Part 1.3 --- Here: glError is = %x", err0);
         
         NSLog(@"aspect:%f, near:%f, far:%f, fH:%f, fW:%f, boundW:%f, boundH:%f",aspect,near, far, fH, fW, self.bounds.size.width, self.bounds.size.height);
         
@@ -377,6 +417,12 @@
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    
+    
+    err0 = glGetError ();
+    if (err0 != GL_NO_ERROR)
+        NSLog(@"=========== Part 2 --- Here: glError is = %x", err0);
+
 }
 
 - (BOOL)presentRenderbuffer

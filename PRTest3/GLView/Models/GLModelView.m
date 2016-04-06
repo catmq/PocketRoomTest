@@ -87,8 +87,10 @@
 
 - (void)setTexture:(GLImage *)texture
 {
+    NSLog(@"********************************************setTexture 0");
     if (_texture != texture)
     {
+        NSLog(@"===============================> setTexture 1");
         _texture = texture;
         [self setNeedsDisplay];
     }
@@ -100,6 +102,8 @@
     [self setNeedsDisplay];
 }
 
+float fval = 1.0f;
+int count = 0;
 - (void)drawRect:(__unused CGRect)rect
 {
     //apply lights
@@ -128,7 +132,11 @@
     //apply model transform
     GLLoadCATransform3D(self.modelTransform);
     
+    NSLog(@"self.texture = %@", self.texture);
+    
+    
     //set texture
+    
     [self.blendColor ?: [UIColor whiteColor] bindGLColor];
     if (self.texture)
     {
@@ -141,8 +149,67 @@
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
     
+    /*
+     // test
+    if(fval<0)
+        fval = 1.0f;
+    
+    //[UIColor blueColor];//
+    self.blendColor = [UIColor colorWithRed:fval green:0 blue:0 alpha:1.0f];
+    //fval = fval - 0.1f;
+    
+    [self.blendColor bindGLColor];
+    count++;
+    NSLog(@"count= %d, color:%f",count,fval);
+    
+    glDisable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    */
+    /*
+    //test2
+    if (btest)
+    {
+        self.blendColor = [UIColor blueColor];
+    }
+    else
+    {
+        self.blendColor = [UIColor redColor];
+    }
+    btest = !btest;
+    [self.blendColor bindGLColor];
+    
+    glDisable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+     */
+    ////////
+    
+    
+    NSLog(@"************************start self.model drawinggggg.......");
     //render the model
     [self.model draw];
+    NSLog(@"************************finished self.model drawinggggg.......");
+    
+    GLint progid;
+    glGetIntegerv(GL_CURRENT_PROGRAM,&progid);
+    
+    NSLog(@"========= ModelView =========current gl program: %d", progid);
+    
+    //GLint progid;
+    //glGetIntegerv(GL_CURRENT_PROGRAM,&progid);
+    
+    //NSLog(@"***************** modelview **************current gl program: %d", progid);
+    
+    GLenum err0 = glGetError ();
+    if (err0 != GL_NO_ERROR)
+        NSLog(@"=========== Part -6 --- Here: glError is = %x", err0);
+    
+    
+    glDisable(GL_TEXTURE_2D);
+    
+
+        //glUseProgram(0);
 }
 
 @end

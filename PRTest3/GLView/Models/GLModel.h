@@ -52,7 +52,6 @@
 
 - (void)draw;
 //- (float*)centerpoint;
-
 @end
 
 

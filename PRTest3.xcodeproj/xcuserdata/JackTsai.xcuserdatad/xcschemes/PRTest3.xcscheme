@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51A1412A1C59F78F00B2F5E9"
-               BuildableName = "PocketRoom.app"
+               BuildableName = "PocketRoomTest.app"
                BlueprintName = "PRTest3"
                ReferencedContainer = "container:PRTest3.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51A1412A1C59F78F00B2F5E9"
-            BuildableName = "PocketRoom.app"
+            BuildableName = "PocketRoomTest.app"
             BlueprintName = "PRTest3"
             ReferencedContainer = "container:PRTest3.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51A1412A1C59F78F00B2F5E9"
-            BuildableName = "PocketRoom.app"
+            BuildableName = "PocketRoomTest.app"
             BlueprintName = "PRTest3"
             ReferencedContainer = "container:PRTest3.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51A1412A1C59F78F00B2F5E9"
-            BuildableName = "PocketRoom.app"
+            BuildableName = "PocketRoomTest.app"
             BlueprintName = "PRTest3"
             ReferencedContainer = "container:PRTest3.xcodeproj">
          </BuildableReference>

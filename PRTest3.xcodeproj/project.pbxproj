@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E7C6DA41CB32F2F00B8F865 /* RotateGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA31CB32F2F00B8F865 /* RotateGradientView.m */; };
+		0E7C6DA61CB4519D00B8F865 /* RoomModel.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA51CB4519D00B8F865 /* RoomModel.obj */; };
+		0E7C6DA91CB451AC00B8F865 /* RoomModel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA71CB451AC00B8F865 /* RoomModel.jpg */; };
+		0E7C6DAA1CB451AC00B8F865 /* RoomModel.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA81CB451AC00B8F865 /* RoomModel.mtl */; };
+		510382BD1C867D15005C9BDB /* ObjViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382B41C867D15005C9BDB /* ObjViewController.mm */; };
+		510382BE1C867D15005C9BDB /* ObjViewController+Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382B61C867D15005C9BDB /* ObjViewController+Camera.mm */; };
+		510382BF1C867D15005C9BDB /* ObjViewController+OpenGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382B81C867D15005C9BDB /* ObjViewController+OpenGL.mm */; };
+		510382C01C867D15005C9BDB /* ObjViewController+Sensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382BA1C867D15005C9BDB /* ObjViewController+Sensor.mm */; };
+		510382C11C867D15005C9BDB /* ObjViewController+SLAM.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382BC1C867D15005C9BDB /* ObjViewController+SLAM.mm */; };
+		510382C61C867EED005C9BDB /* ObjMeshViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382C51C867EED005C9BDB /* ObjMeshViewController.mm */; };
+		510382C91C867FD7005C9BDB /* ObjViewpointController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382C81C867FD7005C9BDB /* ObjViewpointController.mm */; };
+		510382CC1C86C0FD005C9BDB /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 510382CB1C86C0FD005C9BDB /* MultiViewController.m */; };
+		5144E5881C96A6C90005DF36 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5144E5871C96A6C90005DF36 /* splashscreen.png */; };
 		51875D231C695BC300472165 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 51875D0D1C695BC300472165 /* Contents.json */; };
 		51875D241C695BC300472165 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 51875D0E1C695BC300472165 /* Icon-40.png */; };
 		51875D251C695BC300472165 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51875D0F1C695BC300472165 /* Icon-40@2x.png */; };
@@ -30,6 +43,7 @@
 		51875D371C695BC300472165 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51875D211C695BC300472165 /* iTunesArtwork@2x.png */; };
 		51875D381C695BC300472165 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 51875D221C695BC300472165 /* README.md */; };
 		51875D3A1C695DD100472165 /* Title-ARchitect-Web Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 51875D391C695DD100472165 /* Title-ARchitect-Web Banner.png */; };
+		519249C31CA9B3F60057846A /* DetectButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 519249C21CA9B3F60057846A /* DetectButton@2x.png */; };
 		51A141301C59F78F00B2F5E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A1412F1C59F78F00B2F5E9 /* main.m */; };
 		51A141331C59F78F00B2F5E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A141321C59F78F00B2F5E9 /* AppDelegate.m */; };
 		51A141391C59F78F00B2F5E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A141371C59F78F00B2F5E9 /* Main.storyboard */; };
@@ -54,7 +68,6 @@
 		51A1417E1C5A010B00B2F5E9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A1417D1C5A010B00B2F5E9 /* CoreMotion.framework */; };
 		51A141801C5A012600B2F5E9 /* Structure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A1417F1C5A012600B2F5E9 /* Structure.framework */; };
 		51A141821C5A013700B2F5E9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A141811C5A013700B2F5E9 /* libz.tbd */; };
-		51A141851C5A02BC00B2F5E9 /* RoomCapture in Resources */ = {isa = PBXBuildFile; fileRef = 51A141841C5A02BC00B2F5E9 /* RoomCapture */; };
 		51A141A51C5A8E9A00B2F5E9 /* CalibrationOverlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141871C5A8E9900B2F5E9 /* CalibrationOverlay.mm */; };
 		51A141A61C5A8E9A00B2F5E9 /* CustomShaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141891C5A8E9900B2F5E9 /* CustomShaders.mm */; };
 		51A141A71C5A8E9A00B2F5E9 /* CustomUIKitStyles.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A1418B1C5A8E9900B2F5E9 /* CustomUIKitStyles.mm */; };
@@ -65,10 +78,10 @@
 		51A141AD1C5A8E9A00B2F5E9 /* MeshRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141951C5A8E9900B2F5E9 /* MeshRenderer.mm */; };
 		51A141AF1C5A8E9A00B2F5E9 /* MeshViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141981C5A8E9A00B2F5E9 /* MeshViewController.mm */; };
 		51A141B01C5A8E9A00B2F5E9 /* ScanViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A1419A1C5A8E9A00B2F5E9 /* ScanViewController.mm */; };
-		51A141B11C5A8E9A00B2F5E9 /* ViewController+Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A1419C1C5A8E9A00B2F5E9 /* ViewController+Camera.mm */; };
-		51A141B21C5A8E9A00B2F5E9 /* ViewController+OpenGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A1419E1C5A8E9A00B2F5E9 /* ViewController+OpenGL.mm */; };
-		51A141B31C5A8E9A00B2F5E9 /* ViewController+Sensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141A01C5A8E9A00B2F5E9 /* ViewController+Sensor.mm */; };
-		51A141B41C5A8E9A00B2F5E9 /* ViewController+SLAM.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141A21C5A8E9A00B2F5E9 /* ViewController+SLAM.mm */; };
+		51A141B11C5A8E9A00B2F5E9 /* ScanViewController+Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A1419C1C5A8E9A00B2F5E9 /* ScanViewController+Camera.mm */; };
+		51A141B21C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A1419E1C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.mm */; };
+		51A141B31C5A8E9A00B2F5E9 /* ScanViewController+Sensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141A01C5A8E9A00B2F5E9 /* ScanViewController+Sensor.mm */; };
+		51A141B41C5A8E9A00B2F5E9 /* ScanViewController+SLAM.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141A21C5A8E9A00B2F5E9 /* ScanViewController+SLAM.mm */; };
 		51A141B51C5A8E9A00B2F5E9 /* ViewpointController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51A141A41C5A8E9A00B2F5E9 /* ViewpointController.mm */; };
 		51A141DF1C5AB20900B2F5E9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A141D31C5AB20900B2F5E9 /* Default-568h@2x.png */; };
 		51A141E01C5AB20900B2F5E9 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 51A141D41C5AB20900B2F5E9 /* Default-Landscape@2x~ipad.png */; };
@@ -130,6 +143,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E7C6DA21CB32F2F00B8F865 /* RotateGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotateGradientView.h; path = ../RotateGradientView.h; sourceTree = "<group>"; };
+		0E7C6DA31CB32F2F00B8F865 /* RotateGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotateGradientView.m; path = ../RotateGradientView.m; sourceTree = "<group>"; };
+		0E7C6DA51CB4519D00B8F865 /* RoomModel.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoomModel.obj; sourceTree = "<group>"; };
+		0E7C6DA71CB451AC00B8F865 /* RoomModel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RoomModel.jpg; sourceTree = "<group>"; };
+		0E7C6DA81CB451AC00B8F865 /* RoomModel.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoomModel.mtl; sourceTree = "<group>"; };
+		510382B31C867D15005C9BDB /* ObjViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjViewController.h; sourceTree = "<group>"; };
+		510382B41C867D15005C9BDB /* ObjViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjViewController.mm; sourceTree = "<group>"; };
+		510382B51C867D15005C9BDB /* ObjViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjViewController+Camera.h"; sourceTree = "<group>"; };
+		510382B61C867D15005C9BDB /* ObjViewController+Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjViewController+Camera.mm"; sourceTree = "<group>"; };
+		510382B71C867D15005C9BDB /* ObjViewController+OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjViewController+OpenGL.h"; sourceTree = "<group>"; };
+		510382B81C867D15005C9BDB /* ObjViewController+OpenGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjViewController+OpenGL.mm"; sourceTree = "<group>"; };
+		510382B91C867D15005C9BDB /* ObjViewController+Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjViewController+Sensor.h"; sourceTree = "<group>"; };
+		510382BA1C867D15005C9BDB /* ObjViewController+Sensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjViewController+Sensor.mm"; sourceTree = "<group>"; };
+		510382BB1C867D15005C9BDB /* ObjViewController+SLAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjViewController+SLAM.h"; sourceTree = "<group>"; };
+		510382BC1C867D15005C9BDB /* ObjViewController+SLAM.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjViewController+SLAM.mm"; sourceTree = "<group>"; };
+		510382C41C867EED005C9BDB /* ObjMeshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjMeshViewController.h; sourceTree = "<group>"; };
+		510382C51C867EED005C9BDB /* ObjMeshViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjMeshViewController.mm; sourceTree = "<group>"; };
+		510382C71C867FD7005C9BDB /* ObjViewpointController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjViewpointController.h; sourceTree = "<group>"; };
+		510382C81C867FD7005C9BDB /* ObjViewpointController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjViewpointController.mm; sourceTree = "<group>"; };
+		510382CA1C86C0FD005C9BDB /* MultiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiViewController.h; sourceTree = "<group>"; };
+		510382CB1C86C0FD005C9BDB /* MultiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiViewController.m; sourceTree = "<group>"; };
+		5144E5871C96A6C90005DF36 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splashscreen.png; path = ios/splashscreen.png; sourceTree = "<group>"; };
 		51875D0D1C695BC300472165 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		51875D0E1C695BC300472165 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		51875D0F1C695BC300472165 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
@@ -153,7 +188,8 @@
 		51875D211C695BC300472165 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		51875D221C695BC300472165 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		51875D391C695DD100472165 /* Title-ARchitect-Web Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Title-ARchitect-Web Banner.png"; sourceTree = "<group>"; };
-		51A1412B1C59F78F00B2F5E9 /* PocketRoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketRoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		519249C21CA9B3F60057846A /* DetectButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DetectButton@2x.png"; sourceTree = "<group>"; };
+		51A1412B1C59F78F00B2F5E9 /* PocketRoomTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketRoomTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A1412F1C59F78F00B2F5E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51A141311C59F78F00B2F5E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		51A141321C59F78F00B2F5E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -184,7 +220,6 @@
 		51A1417D1C5A010B00B2F5E9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		51A1417F1C5A012600B2F5E9 /* Structure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Structure.framework; path = Frameworks/Structure.framework; sourceTree = "<group>"; };
 		51A141811C5A013700B2F5E9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		51A141841C5A02BC00B2F5E9 /* RoomCapture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RoomCapture; sourceTree = "<group>"; };
 		51A141861C5A8E9900B2F5E9 /* CalibrationOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationOverlay.h; sourceTree = "<group>"; };
 		51A141871C5A8E9900B2F5E9 /* CalibrationOverlay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CalibrationOverlay.mm; sourceTree = "<group>"; };
 		51A141881C5A8E9900B2F5E9 /* CustomShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomShaders.h; sourceTree = "<group>"; };
@@ -204,14 +239,14 @@
 		51A141981C5A8E9A00B2F5E9 /* MeshViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MeshViewController.mm; sourceTree = "<group>"; };
 		51A141991C5A8E9A00B2F5E9 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanViewController.h; path = PRTest3/ScanViewController.h; sourceTree = SOURCE_ROOT; };
 		51A1419A1C5A8E9A00B2F5E9 /* ScanViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ScanViewController.mm; path = PRTest3/ScanViewController.mm; sourceTree = SOURCE_ROOT; };
-		51A1419B1C5A8E9A00B2F5E9 /* ViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Camera.h"; sourceTree = "<group>"; };
-		51A1419C1C5A8E9A00B2F5E9 /* ViewController+Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Camera.mm"; sourceTree = "<group>"; };
-		51A1419D1C5A8E9A00B2F5E9 /* ViewController+OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+OpenGL.h"; sourceTree = "<group>"; };
-		51A1419E1C5A8E9A00B2F5E9 /* ViewController+OpenGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+OpenGL.mm"; sourceTree = "<group>"; };
-		51A1419F1C5A8E9A00B2F5E9 /* ViewController+Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Sensor.h"; sourceTree = "<group>"; };
-		51A141A01C5A8E9A00B2F5E9 /* ViewController+Sensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+Sensor.mm"; sourceTree = "<group>"; };
-		51A141A11C5A8E9A00B2F5E9 /* ViewController+SLAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+SLAM.h"; sourceTree = "<group>"; };
-		51A141A21C5A8E9A00B2F5E9 /* ViewController+SLAM.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ViewController+SLAM.mm"; sourceTree = "<group>"; };
+		51A1419B1C5A8E9A00B2F5E9 /* ScanViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScanViewController+Camera.h"; sourceTree = "<group>"; };
+		51A1419C1C5A8E9A00B2F5E9 /* ScanViewController+Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ScanViewController+Camera.mm"; sourceTree = "<group>"; };
+		51A1419D1C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScanViewController+OpenGL.h"; sourceTree = "<group>"; };
+		51A1419E1C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ScanViewController+OpenGL.mm"; sourceTree = "<group>"; };
+		51A1419F1C5A8E9A00B2F5E9 /* ScanViewController+Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScanViewController+Sensor.h"; sourceTree = "<group>"; };
+		51A141A01C5A8E9A00B2F5E9 /* ScanViewController+Sensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ScanViewController+Sensor.mm"; sourceTree = "<group>"; };
+		51A141A11C5A8E9A00B2F5E9 /* ScanViewController+SLAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScanViewController+SLAM.h"; sourceTree = "<group>"; };
+		51A141A21C5A8E9A00B2F5E9 /* ScanViewController+SLAM.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ScanViewController+SLAM.mm"; sourceTree = "<group>"; };
 		51A141A31C5A8E9A00B2F5E9 /* ViewpointController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewpointController.h; sourceTree = "<group>"; };
 		51A141A41C5A8E9A00B2F5E9 /* ViewpointController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewpointController.mm; sourceTree = "<group>"; };
 		51A141B61C5A90E900B2F5E9 /* PRTest3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PRTest3-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -309,6 +344,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510382B21C867905005C9BDB /* ScanViewController_Group */ = {
+			isa = PBXGroup;
+			children = (
+				51A141991C5A8E9A00B2F5E9 /* ScanViewController.h */,
+				51A1419A1C5A8E9A00B2F5E9 /* ScanViewController.mm */,
+				51A1419B1C5A8E9A00B2F5E9 /* ScanViewController+Camera.h */,
+				51A1419C1C5A8E9A00B2F5E9 /* ScanViewController+Camera.mm */,
+				51A1419D1C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.h */,
+				51A1419E1C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.mm */,
+				51A1419F1C5A8E9A00B2F5E9 /* ScanViewController+Sensor.h */,
+				51A141A01C5A8E9A00B2F5E9 /* ScanViewController+Sensor.mm */,
+				51A141A11C5A8E9A00B2F5E9 /* ScanViewController+SLAM.h */,
+				51A141A21C5A8E9A00B2F5E9 /* ScanViewController+SLAM.mm */,
+			);
+			name = ScanViewController_Group;
+			sourceTree = "<group>";
+		};
+		510382C31C867D31005C9BDB /* ObjViewController_Group */ = {
+			isa = PBXGroup;
+			children = (
+				510382B31C867D15005C9BDB /* ObjViewController.h */,
+				510382B41C867D15005C9BDB /* ObjViewController.mm */,
+				510382B51C867D15005C9BDB /* ObjViewController+Camera.h */,
+				510382B61C867D15005C9BDB /* ObjViewController+Camera.mm */,
+				510382B71C867D15005C9BDB /* ObjViewController+OpenGL.h */,
+				510382B81C867D15005C9BDB /* ObjViewController+OpenGL.mm */,
+				510382B91C867D15005C9BDB /* ObjViewController+Sensor.h */,
+				510382BA1C867D15005C9BDB /* ObjViewController+Sensor.mm */,
+				510382BB1C867D15005C9BDB /* ObjViewController+SLAM.h */,
+				510382BC1C867D15005C9BDB /* ObjViewController+SLAM.mm */,
+				510382C71C867FD7005C9BDB /* ObjViewpointController.h */,
+				510382C81C867FD7005C9BDB /* ObjViewpointController.mm */,
+			);
+			name = ObjViewController_Group;
+			sourceTree = "<group>";
+		};
 		51875D0B1C695BC300472165 /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,7 +422,6 @@
 			isa = PBXGroup;
 			children = (
 				51A141831C5A014B00B2F5E9 /* Frameworks */,
-				51A141841C5A02BC00B2F5E9 /* RoomCapture */,
 				51A1412D1C59F78F00B2F5E9 /* PRTest3 */,
 				51A141471C59F79000B2F5E9 /* PRTest3Tests */,
 				51A141521C59F79000B2F5E9 /* PRTest3UITests */,
@@ -362,7 +432,7 @@
 		51A1412C1C59F78F00B2F5E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51A1412B1C59F78F00B2F5E9 /* PocketRoom.app */,
+				51A1412B1C59F78F00B2F5E9 /* PocketRoomTest.app */,
 				51A141441C59F79000B2F5E9 /* PRTest3Tests.xctest */,
 				51A1414F1C59F79000B2F5E9 /* PRTest3UITests.xctest */,
 			);
@@ -372,6 +442,8 @@
 		51A1412D1C59F78F00B2F5E9 /* PRTest3 */ = {
 			isa = PBXGroup;
 			children = (
+				0E7C6DA21CB32F2F00B8F865 /* RotateGradientView.h */,
+				0E7C6DA31CB32F2F00B8F865 /* RotateGradientView.m */,
 				51B4307A1C62CC3400005952 /* TestImages */,
 				51B4307D1C62CC3400005952 /* TestModels */,
 				51B4305E1C62AE6000005952 /* GLView */,
@@ -394,16 +466,12 @@
 				51A141951C5A8E9900B2F5E9 /* MeshRenderer.mm */,
 				51A141971C5A8E9A00B2F5E9 /* MeshViewController.h */,
 				51A141981C5A8E9A00B2F5E9 /* MeshViewController.mm */,
-				51A141991C5A8E9A00B2F5E9 /* ScanViewController.h */,
-				51A1419A1C5A8E9A00B2F5E9 /* ScanViewController.mm */,
-				51A1419B1C5A8E9A00B2F5E9 /* ViewController+Camera.h */,
-				51A1419C1C5A8E9A00B2F5E9 /* ViewController+Camera.mm */,
-				51A1419D1C5A8E9A00B2F5E9 /* ViewController+OpenGL.h */,
-				51A1419E1C5A8E9A00B2F5E9 /* ViewController+OpenGL.mm */,
-				51A1419F1C5A8E9A00B2F5E9 /* ViewController+Sensor.h */,
-				51A141A01C5A8E9A00B2F5E9 /* ViewController+Sensor.mm */,
-				51A141A11C5A8E9A00B2F5E9 /* ViewController+SLAM.h */,
-				51A141A21C5A8E9A00B2F5E9 /* ViewController+SLAM.mm */,
+				510382CA1C86C0FD005C9BDB /* MultiViewController.h */,
+				510382CB1C86C0FD005C9BDB /* MultiViewController.m */,
+				510382C41C867EED005C9BDB /* ObjMeshViewController.h */,
+				510382C51C867EED005C9BDB /* ObjMeshViewController.mm */,
+				510382C31C867D31005C9BDB /* ObjViewController_Group */,
+				510382B21C867905005C9BDB /* ScanViewController_Group */,
 				51A141A31C5A8E9A00B2F5E9 /* ViewpointController.h */,
 				51A141A41C5A8E9A00B2F5E9 /* ViewpointController.mm */,
 				51A141311C59F78F00B2F5E9 /* AppDelegate.h */,
@@ -481,12 +549,14 @@
 				51A141D41C5AB20900B2F5E9 /* Default-Landscape@2x~ipad.png */,
 				51A141D51C5AB20900B2F5E9 /* Default-Landscape~ipad.png */,
 				51A141D61C5AB20900B2F5E9 /* Default@2x.png */,
+				519249C21CA9B3F60057846A /* DetectButton@2x.png */,
 				51A141D71C5AB20900B2F5E9 /* doneButton@2x.png */,
 				51A141D81C5AB20900B2F5E9 /* innerCircle@2x.png */,
 				51A141D91C5AB20900B2F5E9 /* measurementTape.png */,
 				51A141DA1C5AB20900B2F5E9 /* outerCircle@2x.png */,
 				51A141DB1C5AB20900B2F5E9 /* resetScanButton@2x.png */,
 				51A141DC1C5AB20900B2F5E9 /* Splash.png */,
+				5144E5871C96A6C90005DF36 /* splashscreen.png */,
 				51A141DD1C5AB20900B2F5E9 /* startScanButton@2x.png */,
 			);
 			path = Graphics;
@@ -542,6 +612,8 @@
 		51B4307A1C62CC3400005952 /* TestImages */ = {
 			isa = PBXGroup;
 			children = (
+				0E7C6DA71CB451AC00B8F865 /* RoomModel.jpg */,
+				0E7C6DA81CB451AC00B8F865 /* RoomModel.mtl */,
 				51CFCFC11C72B9C8003D8C26 /* 111.jpg */,
 				51CFCFC21C72B9C8003D8C26 /* 111.mtl */,
 				51CFCFBC1C72B8AA003D8C26 /* Model.mtl */,
@@ -557,6 +629,7 @@
 		51B4307D1C62CC3400005952 /* TestModels */ = {
 			isa = PBXGroup;
 			children = (
+				0E7C6DA51CB4519D00B8F865 /* RoomModel.obj */,
 				51CFCFBF1C72B970003D8C26 /* 111.obj */,
 				51CFCFB91C72B8A0003D8C26 /* Model.obj */,
 				51B4307E1C62CC3400005952 /* chair.obj */,
@@ -587,7 +660,7 @@
 			);
 			name = PRTest3;
 			productName = PRTest3;
-			productReference = 51A1412B1C59F78F00B2F5E9 /* PocketRoom.app */;
+			productReference = 51A1412B1C59F78F00B2F5E9 /* PocketRoomTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		51A141431C59F79000B2F5E9 /* PRTest3Tests */ = {
@@ -637,7 +710,7 @@
 				TargetAttributes = {
 					51A1412A1C59F78F00B2F5E9 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = BGHNZY6W4E;
+						DevelopmentTeam = 5XMM3QCR4U;
 					};
 					51A141431C59F79000B2F5E9 = {
 						CreatedOnToolsVersion = 7.2;
@@ -678,10 +751,11 @@
 				51CFCFC31C72B9C8003D8C26 /* 111.jpg in Resources */,
 				51875D351C695BC300472165 /* Icon@2x.png in Resources */,
 				51875D2B1C695BC300472165 /* Icon-83.5@2x.png in Resources */,
+				0E7C6DAA1CB451AC00B8F865 /* RoomModel.mtl in Resources */,
 				51875D361C695BC300472165 /* iTunesArtwork.png in Resources */,
 				51A141E51C5AB20900B2F5E9 /* measurementTape.png in Resources */,
-				51A141851C5A02BC00B2F5E9 /* RoomCapture in Resources */,
 				51B4308B1C62CC3400005952 /* ship.obj in Resources */,
+				0E7C6DA61CB4519D00B8F865 /* RoomModel.obj in Resources */,
 				51CFCFBA1C72B8A0003D8C26 /* Model.obj in Resources */,
 				51A141EE1C5AB36600B2F5E9 /* calibration.png in Resources */,
 				51875D2A1C695BC300472165 /* Icon-76@2x.png in Resources */,
@@ -712,6 +786,8 @@
 				51A141E11C5AB20900B2F5E9 /* Default-Landscape~ipad.png in Resources */,
 				51E7CC461C6007D80046793C /* Images.xcassets in Resources */,
 				51875D2F1C695BC300472165 /* Icon-60.png in Resources */,
+				0E7C6DA91CB451AC00B8F865 /* RoomModel.jpg in Resources */,
+				5144E5881C96A6C90005DF36 /* splashscreen.png in Resources */,
 				51B430901C62D7FB00005952 /* capsule.mtl in Resources */,
 				51B430841C62CC3400005952 /* chair.tga in Resources */,
 				51875D331C695BC300472165 /* Icon-Small-50@2x.png in Resources */,
@@ -721,6 +797,7 @@
 				51875D341C695BC300472165 /* Icon.png in Resources */,
 				51875D3A1C695DD100472165 /* Title-ARchitect-Web Banner.png in Resources */,
 				51875D2C1C695BC300472165 /* Icon-Small.png in Resources */,
+				519249C31CA9B3F60057846A /* DetectButton@2x.png in Resources */,
 				51A1413B1C59F78F00B2F5E9 /* Assets.xcassets in Resources */,
 				51CFCFBE1C72B8AA003D8C26 /* Model.mtl in Resources */,
 				51A141E01C5AB20900B2F5E9 /* Default-Landscape@2x~ipad.png in Resources */,
@@ -755,32 +832,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				510382C01C867D15005C9BDB /* ObjViewController+Sensor.mm in Sources */,
 				51A141F31C5AD72900B2F5E9 /* ViewController.m in Sources */,
+				510382BF1C867D15005C9BDB /* ObjViewController+OpenGL.mm in Sources */,
 				51A141AB1C5A8E9A00B2F5E9 /* Joystick.mm in Sources */,
 				51B430781C62AE6000005952 /* GLModel.m in Sources */,
 				51A141331C59F78F00B2F5E9 /* AppDelegate.m in Sources */,
 				51B430741C62AE6000005952 /* GLImage.m in Sources */,
+				0E7C6DA41CB32F2F00B8F865 /* RotateGradientView.m in Sources */,
 				51A141301C59F78F00B2F5E9 /* main.m in Sources */,
 				51B430751C62AE6000005952 /* GLImageMap.m in Sources */,
 				51B430721C62AE6000005952 /* GLUtils.m in Sources */,
 				51A141AA1C5A8E9A00B2F5E9 /* GraphicsRenderer.mm in Sources */,
-				51A141B41C5A8E9A00B2F5E9 /* ViewController+SLAM.mm in Sources */,
-				51A141B21C5A8E9A00B2F5E9 /* ViewController+OpenGL.mm in Sources */,
+				51A141B41C5A8E9A00B2F5E9 /* ScanViewController+SLAM.mm in Sources */,
+				51A141B21C5A8E9A00B2F5E9 /* ScanViewController+OpenGL.mm in Sources */,
 				51A141B01C5A8E9A00B2F5E9 /* ScanViewController.mm in Sources */,
 				51B430731C62AE6000005952 /* GLView.m in Sources */,
 				51A141AD1C5A8E9A00B2F5E9 /* MeshRenderer.mm in Sources */,
 				51A141A61C5A8E9A00B2F5E9 /* CustomShaders.mm in Sources */,
 				51875D381C695BC300472165 /* README.md in Sources */,
+				510382C61C867EED005C9BDB /* ObjMeshViewController.mm in Sources */,
 				51A141A51C5A8E9A00B2F5E9 /* CalibrationOverlay.mm in Sources */,
+				510382C11C867D15005C9BDB /* ObjViewController+SLAM.mm in Sources */,
 				51B430771C62AE6000005952 /* GLLight.m in Sources */,
 				51A141B51C5A8E9A00B2F5E9 /* ViewpointController.mm in Sources */,
+				510382C91C867FD7005C9BDB /* ObjViewpointController.mm in Sources */,
 				51B430761C62AE6000005952 /* GLImageView.m in Sources */,
 				51B430791C62AE6000005952 /* GLModelView.m in Sources */,
-				51A141B31C5A8E9A00B2F5E9 /* ViewController+Sensor.mm in Sources */,
+				510382BE1C867D15005C9BDB /* ObjViewController+Camera.mm in Sources */,
+				51A141B31C5A8E9A00B2F5E9 /* ScanViewController+Sensor.mm in Sources */,
 				51A141A71C5A8E9A00B2F5E9 /* CustomUIKitStyles.mm in Sources */,
 				51A141A81C5A8E9A00B2F5E9 /* EAGLView.mm in Sources */,
-				51A141B11C5A8E9A00B2F5E9 /* ViewController+Camera.mm in Sources */,
+				51A141B11C5A8E9A00B2F5E9 /* ScanViewController+Camera.mm in Sources */,
 				51B4305D1C62ADE000005952 /* LoadViewController.m in Sources */,
+				510382BD1C867D15005C9BDB /* ObjViewController.mm in Sources */,
+				510382CC1C86C0FD005C9BDB /* MultiViewController.m in Sources */,
 				51A141AF1C5A8E9A00B2F5E9 /* MeshViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -931,6 +1017,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -942,8 +1029,9 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = PRTest3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JackTsai.PRTest3;
-				PRODUCT_NAME = PocketRoom;
+				PRODUCT_BUNDLE_IDENTIFIER = QingMao.PRTestNew;
+				PRODUCT_NAME = PocketRoomTest;
+				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WARNING_CFLAGS = "";
 			};
@@ -958,6 +1046,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -970,8 +1059,9 @@
 				INFOPLIST_FILE = PRTest3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = JackTsai.PRTest3;
-				PRODUCT_NAME = PocketRoom;
+				PRODUCT_BUNDLE_IDENTIFIER = QingMao.PRTestNew;
+				PRODUCT_NAME = PocketRoomTest;
+				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WARNING_CFLAGS = "";
 			};
@@ -983,7 +1073,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PRTest3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JackTsai.PRTest3Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = QingMao.PRTest3Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PRTest3.app/PRTest3";
 			};
@@ -995,7 +1085,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PRTest3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JackTsai.PRTest3Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = QingMao.PRTest3Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PRTest3.app/PRTest3";
 			};
@@ -1006,7 +1096,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = PRTest3UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JackTsai.PRTest3UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = QingMao.PRTest3UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = PRTest3;
 				USES_XCTRUNNER = YES;
@@ -1018,7 +1108,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = PRTest3UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JackTsai.PRTest3UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = QingMao.PRTest3UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = PRTest3;
 				USES_XCTRUNNER = YES;

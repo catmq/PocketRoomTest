@@ -23,8 +23,8 @@
     // STWirelessLog is very helpful for debugging while your Structure Sensor is plugged in.
     // See SDK documentation for how to start a listener on your computer.
     NSError* error = nil;
-    NSString *remoteLogHost = @"192.168.38.113"; //EA
-    //NSString *remoteLogHost = @"192.168.0.29"; // home
+    NSString *remoteLogHost = @"192.168.39.6"; //EA
+    //NSString *remoteLogHost = @"192.168.0.19"; // home
     [STWirelessLog broadcastLogsToWirelessConsoleAtAddress:remoteLogHost usingPort:4999 error:&error];
     if (error)
         NSLog(@"Oh no! Can't start wireless log: %@", [error localizedDescription]);

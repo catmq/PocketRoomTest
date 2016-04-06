@@ -79,6 +79,9 @@ struct SlamData
     STMapper *mapper = NULL;
     STCameraPoseInitializer *cameraPoseInitializer = NULL;
     STKeyFrameManager *keyFrameManager = NULL;
+    
+    bool bGetfloor = false;
+    float fDistanceFloor = 0;
 };
 
 struct AppStatus
@@ -212,6 +215,8 @@ struct DisplayData
 @property (nonatomic, retain) AVCaptureDevice *videoDevice;
 
 @property (weak, nonatomic) IBOutlet UILabel *appStatusMessageLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *detectButton;
 @property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
@@ -221,6 +226,8 @@ struct DisplayData
 
 - (IBAction)roomSizeSliderValueChanged:(id)sender;
 - (IBAction)scanButtonPressed:(id)sender;
+- (IBAction)detectFloorButtonPressed:(id)sender;
+
 - (IBAction)resetButtonPressed:(id)sender;
 - (IBAction)doneButtonPressed:(id)sender;
 - (IBAction)roomSizeSliderTouchDown:(id)sender;

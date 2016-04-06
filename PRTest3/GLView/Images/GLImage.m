@@ -262,8 +262,10 @@ static NSCache *imageCache = nil;
         
         //create texture
         glGenTextures(1, &_texture);
-        glBindTexture(GL_TEXTURE_2D, self.texture);
-        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR); 
+        //glBindTexture(GL_TEXTURE_2D, self.texture);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, _texture);
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
         
@@ -419,7 +421,9 @@ static NSCache *imageCache = nil;
                 
                 //create texture
                 glGenTextures(1, &_texture);
-                glBindTexture(GL_TEXTURE_2D, self.texture);
+                //glBindTexture(GL_TEXTURE_2D, self.texture);
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, _texture);
                 GLint filter = (header->numMipmaps)? GL_LINEAR_MIPMAP_LINEAR: GL_LINEAR;
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
@@ -617,7 +621,18 @@ static NSCache *imageCache = nil;
 - (void)bindTexture
 {
     glEnable(GL_TEXTURE_2D);
+    
+    NSLog(@"=====self.blendMode = %d, self.texture = %d", self.blendMode, self.texture);
+    NSLog(@"***************************************bindtexture 1");
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, self.texture);
+    
+    glActiveTexture(GL_TEXTURE1);
+    glDisable(GL_TEXTURE_2D);
+    NSLog(@"***************************************bindtexture 2");
+    
     glEnable(GL_BLEND);
+    
     
     GLenum source, dest;
     switch (self.blendMode)
@@ -649,11 +664,16 @@ static NSCache *imageCache = nil;
     }
     if (source == GL_SRC_ALPHA && self.premultipliedAlpha)
     {
+        NSLog(@"***************************************self.premultipliedAlpha");
         source = GL_ONE;
     }
     glBlendFunc(source, dest);
-    
+    /*
+    NSLog(@"***************************************bindtexture 1");
     glBindTexture(GL_TEXTURE_2D, self.texture);
+    
+    NSLog(@"***************************************bindtexture 2");
+    */
 }
 
 - (const GLfloat *)textureCoords
@@ -704,6 +724,7 @@ static NSCache *imageCache = nil;
 
 - (void)drawWithVertexCoords:(const GLfloat *)vertexCoords
 {
+    NSLog(@"=============================drawWithVertexCoords");
     [self bindTexture];
     
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -717,6 +738,8 @@ static NSCache *imageCache = nil;
 
 - (void)drawAtPoint:(CGPoint)point
 {
+    NSLog(@"=============================drawAtPoint");
+    
     const GLfloat *coords = self.vertexCoords;
     
     //calculate vertices
@@ -736,6 +759,8 @@ static NSCache *imageCache = nil;
 
 - (void)drawInRect:(CGRect)rect
 {
+    NSLog(@"=============================drawInRect");
+    
     const GLfloat *coords = self.vertexCoords;
     CGPoint scale = CGPointMake(rect.size.width / self.size.width, rect.size.height / self.size.height);
     

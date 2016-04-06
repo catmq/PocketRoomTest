@@ -162,8 +162,8 @@ void ViewpointController::onPinchGestureBegan(float scale)
 void ViewpointController::onPinchGestureChanged(float scale)
 {
     // limit the fov
-    const float maxFOV = (44.419998f/180.f * M_PI); //M_PI * 0.9; // default
-    const float minFOV = (44.419998f/180.f * M_PI); //M_PI * 0.1; // default
+    const float maxFOV = M_PI * 0.9;//(44.419998f/180.f * M_PI); // // default
+    const float minFOV = M_PI * 0.1;//(44.419998f/180.f * M_PI); // // default
     d->fovXRadians = MAX(minFOV, MIN(maxFOV, d->fovXRadiansWhenPinchGestureBegan / scale));
     d->glProjectionMatrix = glProjectionMatrixFromPerspective(d->fovXRadians, d->aspectRatio);
     d->cameraOrProjectionChangedSinceLastUpdate = true;

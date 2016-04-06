@@ -5,9 +5,9 @@
 */
 
 #import "ScanViewController.h"
-#import "ViewController+Camera.h"
-#import "ViewController+Sensor.h"
-#import "ViewController+SLAM.h"
+#import "ScanViewController+Camera.h"
+#import "ScanViewController+Sensor.h"
+#import "ScanViewController+SLAM.h"
 
 #import <Structure/Structure.h>
 #import <Structure/StructureSLAM.h>

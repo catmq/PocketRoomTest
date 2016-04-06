@@ -5,10 +5,10 @@
  */
 
 #import "ScanViewController.h"
-#import "ViewController+Camera.h"
-#import "ViewController+Sensor.h"
-#import "ViewController+SLAM.h"
-#import "ViewController+OpenGL.h"
+#import "ScanViewController+Camera.h"
+#import "ScanViewController+Sensor.h"
+#import "ScanViewController+SLAM.h"
+#import "ScanViewController+OpenGL.h"
 
 #import <Structure/Structure.h>
 #import <Structure/StructureSLAM.h>
@@ -211,6 +211,12 @@
 {
     if (_slamState.initialized)
     {
+        if(!_slamState.bGetfloor)
+        {
+            _slamState.fDistanceFloor = depthFrame.depthInMillimeters[depthFrame.height/2 * depthFrame.width + depthFrame.width/2];
+            
+        }
+        
         [self processDepthFrame:depthFrame colorFrame:colorFrame];
         // Scene rendering is triggered by new frames to avoid rendering the same view several times.
         [self renderSceneWithDepthFrame:depthFrame colorFrame:colorFrame];

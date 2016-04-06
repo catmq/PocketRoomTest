@@ -38,6 +38,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GLUtils.h"
+#import <GLKit/GLKit.h>
 
 
 @interface GLView : UIView

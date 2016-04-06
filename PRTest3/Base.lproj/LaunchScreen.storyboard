@@ -26,6 +26,9 @@
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="IFh-3T-JHg">
+                                <rect key="frame" x="-25" y="-7" width="1049" height="775"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.02361830891048091" green="0.04041818151688191" blue="0.048552028795811553" alpha="0.77160904255319152" colorSpace="calibratedRGB"/>
                     </view>
@@ -39,5 +42,6 @@
     </scenes>
     <resources>
         <image name="Title-ARchitect-Web Banner.png" width="320" height="117"/>
+        <image name="splashscreen.png" width="1280" height="720"/>
     </resources>
 </document>

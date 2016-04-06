@@ -57,6 +57,7 @@ public:
     
     virtual void prepareRendering (const float *projection, const float *modelView)
     {
+        NSLog(@"LightedGrayShader preparerendering");
         glUniformMatrix4fv(_modelviewLocation, 1, GL_FALSE, modelView);
         glUniformMatrix4fv (_projectionLocation, 1, GL_FALSE, projection);
         
@@ -75,6 +76,7 @@ public:
         _projectionLocation = glGetUniformLocation(_glProgram, "u_perspective_projection");
         _modelviewLocation = glGetUniformLocation(_glProgram, "u_modelview");
         
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~now Program 0 :%d",_glProgram);
         glUseProgram(0);
         _loaded = true;
     }
@@ -142,12 +144,15 @@ public:
         _projectionLocation = glGetUniformLocation(_glProgram, "u_perspective_projection");
         _modelviewLocation = glGetUniformLocation(_glProgram, "u_modelview");
         
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~now Program 1 :%d",_glProgram);
+
         glUseProgram(0);
         _loaded = true;
     }
     
     virtual void prepareRendering (const float *projection, const float *modelView)
     {
+        NSLog(@"LightedWithPerVertexColorShader preparerendering");
         glUniformMatrix4fv(_modelviewLocation, 1, GL_FALSE, modelView);
         glUniformMatrix4fv (_projectionLocation, 1, GL_FALSE, projection);
         
@@ -217,12 +222,16 @@ public:
         _projectionLocation = glGetUniformLocation(_glProgram, "u_perspective_projection");
         _modelviewLocation = glGetUniformLocation(_glProgram, "u_modelview");
         
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~now Program 2 :%d",_glProgram);
+
         glUseProgram(0);
         _loaded = true;
     }
     
     virtual void prepareRendering (const float *projection, const float *modelView)
     {
+        NSLog(@"XrayShader preparerendering");
+        
         glUniformMatrix4fv(_modelviewLocation, 1, GL_FALSE, modelView);
         glUniformMatrix4fv (_projectionLocation, 1, GL_FALSE, projection);
         
@@ -286,12 +295,17 @@ public:
         _ySamplerLocation = glGetUniformLocation(_glProgram, "s_texture_y");
         _cbcrSamplerLocation = glGetUniformLocation(_glProgram, "s_texture_cbcr");
         
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~now Program 3 :%d",_glProgram);
+
         glUseProgram(0);
         _loaded = true;
     }
     
     virtual void prepareRendering (const float *projection, const float *modelView, GLint textureUnit)
     {
+        NSLog(@"YCbCrTextureShader preparerendering");
+        
+        
         glUniformMatrix4fv (_modelviewLocation, 1, GL_FALSE, modelView);
         glUniformMatrix4fv (_projectionLocation, 1, GL_FALSE, projection);
         
@@ -365,6 +379,8 @@ public:
         _modelviewLocation = glGetUniformLocation(_glProgram, "u_modelview");
         _samplerLocation = glGetUniformLocation(_glProgram, "s_texture");
         
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~now Program 4 :%d",_glProgram);
+
         glUseProgram(0);
         _loaded = true;
     }
@@ -372,6 +388,8 @@ public:
     
     virtual void prepareRendering (const float *projection, const float *modelView, GLint textureUnit)
     {
+        NSLog(@"RGBATextureShader preparerendering");
+        
         glUniformMatrix4fv (_modelviewLocation, 1, GL_FALSE, modelView);
         glUniformMatrix4fv (_projectionLocation, 1, GL_FALSE, projection);
         

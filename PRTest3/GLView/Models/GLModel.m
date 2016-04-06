@@ -100,7 +100,7 @@ WWDC2010Attributes;
 
 //
 @property (nonatomic, assign) GLfloat *centerpos;
-
+@property (nonatomic, assign) GLfloat *boundingpos;
 @end
 
 
@@ -228,167 +228,178 @@ WWDC2010Attributes;
     NSMutableDictionary *indexStrings = [[NSMutableDictionary alloc] init];
     
     //scan through lines
-    NSString *line = nil;
+    //NSString *line = nil;
+    NSString *restLine = nil;
     NSScanner *lineScanner = [NSScanner scannerWithString:string];
     
     int SizeGLuint = sizeof(GLuint);
     int SizeGLfloat = sizeof(GLfloat);
+    int SizeGLTwofloat = SizeGLfloat*2;
+    int SizeGLThreefloat = SizeGLfloat*3;
     int fcount = 0;
     int vcount = 0;
     
-    /*
+    
     NSDate *methodStart = [NSDate date];
     NSDate *methodFinish = [NSDate date];
     NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
     NSTimeInterval fETime = executionTime, vEtime = executionTime, vtEtime = executionTime, vnEtime = executionTime;
-    
+    /*
     NSDate *tStart = [NSDate date];
     NSDate *tFinish = [NSDate date];
     NSTimeInterval tTime = [tFinish timeIntervalSinceDate:tStart];
     NSTimeInterval sTime0 = tTime, sTime1 = tTime, sTime2 = tTime, sTime3 = tTime, sTime4 = tTime, sTime5 = tTime, sTime6 = tTime;
     */
     
+    //
+    NSString *indexString = nil;
+    NSArray *parts = nil;
+    NSNumber *index = nil;
+    NSScanner *scanner = nil;
+    
     NSLog(@"loadobj 3");  // check
-    do
+    
+    
+    //do
+    NSArray *lines = [string componentsSeparatedByString:@"\n"];
+    
+    for (NSString * line in lines)
     {
         //get line
-        [lineScanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet] intoString:&line];
-        NSScanner *scanner = [NSScanner scannerWithString:line];
+        //[lineScanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet] intoString:&line];
+        //scanner = [NSScanner scannerWithString:line];
+        
+        
         
         //get line type
-        NSString *type = nil;
-        [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&type];
+        //NSString *type = nil;
+        //[scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&type];
         
-        if ([type isEqualToString:@"v"])
+        if ([line hasPrefix:@"v "])   //if ([type isEqualToString:@"v"])
         {
             //vertex
             vcount++;
-            //methodStart = [NSDate date];
+            
+            restLine = [line substringFromIndex:2];
             GLfloat coords[3];
+            /*
+            NSArray *values = [restLine componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            coords[0] = [values[0] floatValue];
+            coords[1] = [values[1] floatValue];
+            coords[2] = [values[2] floatValue];
+             */
+            
+            scanner = [NSScanner scannerWithString:restLine];
+             
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
             [scanner scanFloat:&coords[2]];
+            
             [tempVertexData appendBytes:coords length:sizeof(coords)];
-            //methodFinish = [NSDate date];
-            //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-            //vEtime = vEtime + executionTime;
-
+            
         }
-        else if ([type isEqualToString:@"vt"])
+        else if ([line hasPrefix:@"vt "])   //else if ([type isEqualToString:@"vt"])
         {
-            //texture coordinate
-            //methodStart = [NSDate date];
+            restLine = [line substringFromIndex:2];
             GLfloat coords[2];
+            /*
+            NSArray *values = [restLine componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            coords[0] = [values[0] floatValue];
+            coords[1] = [values[1] floatValue];
+            */
+            
+            scanner = [NSScanner scannerWithString:restLine];
+            //texture coordinate
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
+            
             [tempTextCoordData appendBytes:coords length:sizeof(coords)];
-            //methodFinish = [NSDate date];
-            //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-            //vtEtime = vtEtime + executionTime;
         }
-        else if ([type isEqualToString:@"vn"])
+        else if ([line hasPrefix:@"vn "])   //else if ([type isEqualToString:@"vn"])
         {
             //normal
-            //methodStart = [NSDate date];
+            restLine = [line substringFromIndex:2];
             GLfloat coords[3];
+            /*
+            NSArray *values = [restLine componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            coords[0] = [values[0] floatValue];
+            coords[1] = [values[1] floatValue];
+            coords[2] = [values[2] floatValue];
+            */
+            scanner = [NSScanner scannerWithString:restLine];
+            
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
             [scanner scanFloat:&coords[2]];
+            
             [tempNormalData appendBytes:coords length:sizeof(coords)];
-            //methodFinish = [NSDate date];
-            //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-            //vnEtime = vnEtime + executionTime;
         }
-        else if ([type isEqualToString:@"f"])
+        else if ([line hasPrefix:@"f "])   //else if ([type isEqualToString:@"f"])
         {
+            restLine = [line substringFromIndex:2];
+            
             //face
             fcount ++;
-            
             int count = 0;
+            indexString = nil;
             
-            //methodStart = [NSDate date];
-            NSString *indexString = nil;
-            
-            while (![scanner isAtEnd])  // time-consuming
+            NSArray *faces = [restLine componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            for (NSString *indexString in faces)
             {
                 count ++;
-                [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:&indexString];  // time-consuming
-                
-                NSArray *parts = [indexString componentsSeparatedByString:@"/"];  // time-consuming
+                parts = [indexString componentsSeparatedByString:@"/"];  // time-consuming
                 
                 GLuint fIndex = uniqueIndexStrings;
-                NSNumber *index = indexStrings[indexString];
-                
+                index = indexStrings[indexString];
                 
                 if (index == nil)
                 {
-                    //tStart = [NSDate date];
                     uniqueIndexStrings ++;
                     indexStrings[indexString] = @(fIndex);
                     
                     GLuint vIndex = [parts[0] intValue];
-                    [vertexData appendBytes: (GLbyte *)tempVertexData.bytes + (vIndex - 1) * SizeGLfloat * 3 length:SizeGLfloat * 3];
+                    [vertexData appendBytes: (GLbyte *)tempVertexData.bytes + (vIndex - 1) * SizeGLThreefloat length:SizeGLThreefloat];
                     
                     if ([parts count] > 1)
                     {
                         GLuint tIndex = [parts[1] intValue];
-                        if (tIndex) [textCoordData appendBytes: (GLbyte *)tempTextCoordData.bytes + (tIndex - 1) * SizeGLfloat * 2 length:SizeGLfloat * 2];
+                        if (tIndex) {
+                            [textCoordData appendBytes: (GLbyte *)tempTextCoordData.bytes + (tIndex - 1) * SizeGLTwofloat length:SizeGLTwofloat];
+                        }
                     }
                     
                     if ([parts count] > 2)
                     {
                         GLuint nIndex = [parts[2] intValue];
-                        if (nIndex) [normalData appendBytes: (GLbyte *)tempNormalData.bytes + (nIndex - 1) * SizeGLfloat * 3 length:SizeGLfloat * 3];
+                        if (nIndex) {
+                            [normalData appendBytes: (GLbyte *)tempNormalData.bytes + (nIndex - 1) * SizeGLThreefloat length:SizeGLThreefloat];
+                        }
                     }
-                    //tFinish = [NSDate date];
-                    //tTime = [tFinish timeIntervalSinceDate:tStart];
-                    //sTime1 = sTime1 + tTime;
                 }
                 else
                 {
-                    //tStart = [NSDate date];
                     fIndex = [index unsignedLongValue];
-                    //tFinish = [NSDate date];
-                    //tTime = [tFinish timeIntervalSinceDate:tStart];
-                    //sTime2 = sTime2 + tTime;
                 }
                 
                 if (count > 3)
                 {
-                    //face has more than 3 sides
-                    //so insert extra triangle coords
-                    //tStart = [NSDate date];
-                    
                     [faceIndexData appendBytes:(GLbyte *)faceIndexData.bytes + faceIndexData.length - SizeGLuint * 3 length:SizeGLuint];
                     [faceIndexData appendBytes:(GLbyte *)faceIndexData.bytes + faceIndexData.length - SizeGLuint * 2 length:SizeGLuint];
-                    //tFinish = [NSDate date];
-                    //tTime = [tFinish timeIntervalSinceDate:tStart];
-                    //sTime3 = sTime3 + tTime;
                 }
                 
-                //tStart = [NSDate date];
-                
                 [faceIndexData appendBytes:&fIndex length:SizeGLuint];
-                
-                //tFinish = [NSDate date];
-                //tTime = [tFinish timeIntervalSinceDate:tStart];
-                //sTime4 = sTime4 + tTime;
-                
-                //methodFinish = [NSDate date];
-                //executionTime = [methodFinish timeIntervalSinceDate:methodStart];
-                //fETime = fETime + executionTime;
-
             }
             
         }
-        //TODO: more
     }
-    while (![lineScanner isAtEnd]);
     
+    methodFinish = [NSDate date];
+    executionTime = [methodFinish timeIntervalSinceDate:methodStart];
+    fETime = fETime + executionTime;
     
     NSLog(@"loadobj 4=> face: %d, vertices: %d", fcount, vcount);  // check
     //face: 82390, vertices: 76385
-    //NSLog(@"Time=> fETime: %f, vEtime: %f, vtETime: %f, vnEtime: %f", fETime, vEtime, vtEtime, vnEtime);  // check
+    NSLog(@"Time=> fETime: %f, vEtime: %f, vtETime: %f, vnEtime: %f", fETime, vEtime, vtEtime, vnEtime);  // check
     //fETime: 23.699393, vEtime: 0.603432, vtETime: 0.481311, vnEtime: 0.604745
     //NSLog(@"subtime=> sTime0: %f, sTime5: %f, sTime6: %f, sTime1: %f, sTime2: %f, sTime3: %f, sTime4: %f", sTime0, sTime5, sTime6, sTime1, sTime2, sTime3, sTime4);
     //sTime0: 1.920398, sTime5: 2.962393, sTime6: 1.017529, sTime1: 0.990950, sTime2: 0.439304, sTime3: 0.000002, sTime4: 0.614738
@@ -451,6 +462,41 @@ WWDC2010Attributes;
     self.centerpos[2] = self.centerpos[2]/self.vertexCount;
     NSLog(@"finish center point: %f, %f, %f", self.centerpos[0],self.centerpos[1],self.centerpos[2]);
     */
+    
+    // get the max and min bounding box
+    NSLog(@"get bounding point");
+    self.boundingpos =(GLfloat *)malloc(6 * sizeof(GLfloat));
+    self.boundingpos[0] = FLT_MIN;
+    self.boundingpos[1] = FLT_MIN;
+    self.boundingpos[2] = FLT_MIN;
+    self.boundingpos[3] = FLT_MAX;
+    self.boundingpos[4] = FLT_MAX;
+    self.boundingpos[5] = FLT_MAX;
+    
+    for (GLuint i = 0; i < self.vertexCount; i++)
+    {
+        if(self.vertices[3*i] > self.boundingpos[0])
+            self.boundingpos[0] = self.vertices[3*i];
+        if(self.vertices[3*i] < self.boundingpos[3])
+            self.boundingpos[3] = self.vertices[3*i];
+    
+        if(self.vertices[3*i+1] > self.boundingpos[1])
+            self.boundingpos[1] = self.vertices[3*i+1];
+        if(self.vertices[3*i+1] < self.boundingpos[4])
+            self.boundingpos[4] = self.vertices[3*i+1];
+        
+        if(self.vertices[3*i+2] > self.boundingpos[2])
+            self.boundingpos[5] = self.vertices[3*i+2];
+        if(self.vertices[3*i+2] < self.boundingpos[5])
+            self.boundingpos[5] = self.vertices[3*i+2];
+    }
+    
+    NSLog(@"BOUNDING point: (MAX) %f, %f, %f", self.boundingpos[0],self.boundingpos[1],self.boundingpos[2]);
+    NSLog(@"BOUNDING point: (MIN) %f, %f, %f", self.boundingpos[3],self.boundingpos[4],self.boundingpos[5]);
+    
+    /////
+    
+    
     
     //copy texture coords
     if ([textCoordData length])

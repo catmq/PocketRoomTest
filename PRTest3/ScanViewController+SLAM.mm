@@ -5,7 +5,7 @@
  */
 
 #import "ScanViewController.h"
-#import "ViewController+OpenGL.h"
+#import "ScanViewController+OpenGL.h"
 
 #import <Structure/Structure.h>
 #import <Structure/StructureSLAM.h>

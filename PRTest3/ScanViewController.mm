@@ -5,10 +5,10 @@
  */
 
 #import "ScanViewController.h"
-#import "ViewController+Camera.h"
-#import "ViewController+OpenGL.h"
-#import "ViewController+Sensor.h"
-#import "ViewController+SLAM.h"
+#import "ScanViewController+Camera.h"
+#import "ScanViewController+OpenGL.h"
+#import "ScanViewController+Sensor.h"
+#import "ScanViewController+SLAM.h"
 
 #import <Structure/Structure.h>
 #import <Structure/StructureSLAM.h>
@@ -176,7 +176,33 @@
 - (void)enterPoseInitializationState
 {
     
-        NSLog(@"enter PoseInitialization State");
+    NSLog(@"enter PoseInitialization State");
+    
+    // Switch to the Scan button.
+    self.detectButton.hidden = YES;
+    
+    self.scanButton.hidden = NO;
+    self.doneButton.hidden = YES;
+    self.resetButton.hidden = YES;
+    
+    // Show the room size controls.
+    self.roomSizeSlider.hidden = NO;
+    
+    // Cannot be lost in cube placement mode.
+    _trackingMessageLabel.hidden = YES;
+    
+    // We leave exposure unlock during init.
+    [self setColorCameraParametersForInit];
+    
+    _slamState.roomCaptureState = RoomCaptureStatePoseInitialization;
+    
+    [self updateIdleTimer];
+}
+/*
+- (void)enterPoseInitializationState
+{
+    
+    NSLog(@"enter PoseInitialization State");
     
     // Switch to the Scan button.
     self.scanButton.hidden = NO;
@@ -196,11 +222,13 @@
     
     [self updateIdleTimer];
 }
-
+*/
 - (void)enterScanningState
 {
     NSLog(@"enter Scanning State");
     // Switch to the Done button.
+    self.detectButton.hidden = YES;
+    
     self.scanButton.hidden = YES;
     self.doneButton.hidden = NO;
     self.resetButton.hidden = NO;
@@ -215,6 +243,13 @@
     // Set the initial tracker camera pose.
     _slamState.tracker.initialCameraPose = _slamState.cameraPoseInitializer.cameraPose;
     
+    
+    NSLog(@"caminitpos0: %f, %f, %f, %f",_slamState.cameraPoseInitializer.cameraPose.m00, _slamState.cameraPoseInitializer.cameraPose.m01, _slamState.cameraPoseInitializer.cameraPose.m02, _slamState.cameraPoseInitializer.cameraPose.m03);
+    NSLog(@"caminitpos1: %f, %f, %f, %f",_slamState.cameraPoseInitializer.cameraPose.m10, _slamState.cameraPoseInitializer.cameraPose.m11, _slamState.cameraPoseInitializer.cameraPose.m12, _slamState.cameraPoseInitializer.cameraPose.m13);
+    NSLog(@"caminitpos2: %f, %f, %f, %f",_slamState.cameraPoseInitializer.cameraPose.m20, _slamState.cameraPoseInitializer.cameraPose.m21, _slamState.cameraPoseInitializer.cameraPose.m22, _slamState.cameraPoseInitializer.cameraPose.m23);
+    NSLog(@"caminitpos3: %f, %f, %f, %f",_slamState.cameraPoseInitializer.cameraPose.m30, _slamState.cameraPoseInitializer.cameraPose.m31, _slamState.cameraPoseInitializer.cameraPose.m32, _slamState.cameraPoseInitializer.cameraPose.m33);
+    
+    
     // We will lock exposure during scanning to ensure better coloring.
     [self setColorCameraParametersForScanning];
     
@@ -228,6 +263,8 @@
     [self hideTrackingErrorMessage];
     
     // Hide the Scan/Done/Reset button.
+    
+    self.detectButton.hidden = YES;
     self.scanButton.hidden = YES;
     self.doneButton.hidden = YES;
     self.resetButton.hidden = YES;
@@ -529,8 +566,34 @@
 
 - (IBAction)scanButtonPressed:(id)sender
 {
+    /*
+    if(self.detectButton.hidden)
+    {
+        [self enterScanningState];
+    }
+    else
+        NSLog(@"Please detect floor first");
+    */
+    
     [self enterScanningState];
+    
+
 }
+
+- (IBAction)detectFloorButtonPressed:(id)sender
+{
+    // do detect distance to floor
+    
+    //_slamState.bGetfloor = true;
+    
+    NSLog(@"****** distance to floor 1 is %f", _slamState.fDistanceFloor);
+    NSLog(@"****** volume size: %f, %f, %f", _slamState.cameraPoseInitializer.volumeSizeInMeters.x ,_slamState.cameraPoseInitializer.volumeSizeInMeters.y, _slamState.cameraPoseInitializer.volumeSizeInMeters.z);
+    
+    NSLog(@"****** distance to floor 2 is %f", _slamState.fDistanceFloor / _slamState.cameraPoseInitializer.volumeSizeInMeters.y * 0.004f);
+    
+    self.detectButton.hidden = YES;
+}
+
 
 - (IBAction)resetButtonPressed:(id)sender
 {
