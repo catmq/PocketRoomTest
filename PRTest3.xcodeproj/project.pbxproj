@@ -11,6 +11,7 @@
 		0E7C6DA61CB4519D00B8F865 /* RoomModel.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA51CB4519D00B8F865 /* RoomModel.obj */; };
 		0E7C6DA91CB451AC00B8F865 /* RoomModel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA71CB451AC00B8F865 /* RoomModel.jpg */; };
 		0E7C6DAA1CB451AC00B8F865 /* RoomModel.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DA81CB451AC00B8F865 /* RoomModel.mtl */; };
+		0E7C6DAC1CB48D7B00B8F865 /* RoomCapture in Resources */ = {isa = PBXBuildFile; fileRef = 0E7C6DAB1CB48D7B00B8F865 /* RoomCapture */; };
 		510382BD1C867D15005C9BDB /* ObjViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382B41C867D15005C9BDB /* ObjViewController.mm */; };
 		510382BE1C867D15005C9BDB /* ObjViewController+Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382B61C867D15005C9BDB /* ObjViewController+Camera.mm */; };
 		510382BF1C867D15005C9BDB /* ObjViewController+OpenGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 510382B81C867D15005C9BDB /* ObjViewController+OpenGL.mm */; };
@@ -148,6 +149,7 @@
 		0E7C6DA51CB4519D00B8F865 /* RoomModel.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoomModel.obj; sourceTree = "<group>"; };
 		0E7C6DA71CB451AC00B8F865 /* RoomModel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RoomModel.jpg; sourceTree = "<group>"; };
 		0E7C6DA81CB451AC00B8F865 /* RoomModel.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoomModel.mtl; sourceTree = "<group>"; };
+		0E7C6DAB1CB48D7B00B8F865 /* RoomCapture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RoomCapture; sourceTree = "<group>"; };
 		510382B31C867D15005C9BDB /* ObjViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjViewController.h; sourceTree = "<group>"; };
 		510382B41C867D15005C9BDB /* ObjViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjViewController.mm; sourceTree = "<group>"; };
 		510382B51C867D15005C9BDB /* ObjViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjViewController+Camera.h"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		51A141221C59F78F00B2F5E9 = {
 			isa = PBXGroup;
 			children = (
+				0E7C6DAB1CB48D7B00B8F865 /* RoomCapture */,
 				51A141831C5A014B00B2F5E9 /* Frameworks */,
 				51A1412D1C59F78F00B2F5E9 /* PRTest3 */,
 				51A141471C59F79000B2F5E9 /* PRTest3Tests */,
@@ -769,6 +772,7 @@
 				51B430911C62D7FB00005952 /* capsule0.jpg in Resources */,
 				51875D321C695BC300472165 /* Icon-Small-50.png in Resources */,
 				51875D271C695BC300472165 /* Icon-60@2x.png in Resources */,
+				0E7C6DAC1CB48D7B00B8F865 /* RoomCapture in Resources */,
 				51A141E41C5AB20900B2F5E9 /* innerCircle@2x.png in Resources */,
 				51875D2D1C695BC300472165 /* Icon-Small@2x.png in Resources */,
 				51875D281C695BC300472165 /* Icon-60@3x.png in Resources */,
